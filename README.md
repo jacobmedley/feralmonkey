@@ -1,2 +1,2 @@
 # feralmonkey
-Feral Monkey Design Ssytem
+Feral Monkey Design System
