@@ -1,1 +1,29 @@
-{}
+{
+  "background": "{color.white}",
+  "foreground": "{color.slate.950}",
+
+  "card": "{color.white}",
+  "card.foreground": "{color.slate.950}",
+
+  "popover": "{color.white}",
+  "popover.foreground": "{color.slate.950}",
+
+  "primary": "{color.slate.900}",
+  "primary.foreground": "{color.white}",
+
+  "secondary": "{color.slate.100}",
+  "secondary.foreground": "{color.slate.900}",
+
+  "muted": "{color.slate.100}",
+  "muted.foreground": "{color.slate.500}",
+
+  "accent": "{color.slate.100}",
+  "accent.foreground": "{color.slate.900}",
+
+  "destructive": "{color.red.500}",
+  "destructive.foreground": "{color.white}",
+
+  "border": "{color.slate.200}",
+  "input": "{color.slate.200}",
+  "ring": "{color.blue.500}"
+}
