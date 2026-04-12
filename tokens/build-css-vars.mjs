@@ -76,10 +76,15 @@ lines.push("}");
 
 const output = lines.join("\n") + "\n";
 
-const outDir = path.join(root, "apps/web/src/styles");
-fs.mkdirSync(outDir, { recursive: true });
+const targets = [
+  "apps/web/src/styles",
+  "apps/docs/src/styles",
+];
 
-const outFile = path.join(outDir, "fmds-tokens.css");
-fs.writeFileSync(outFile, output, "utf8");
-
-console.log(`Wrote ${outFile}`);
+for (const target of targets) {
+  const outDir = path.join(root, target);
+  fs.mkdirSync(outDir, { recursive: true });
+  const outFile = path.join(outDir, "fmds-tokens.css");
+  fs.writeFileSync(outFile, output, "utf8");
+  console.log(`Wrote ${outFile}`);
+}
