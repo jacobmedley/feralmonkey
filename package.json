@@ -1,6 +1,10 @@
 {
   "name": "feralmonkey",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "tokens:build": "node tokens/build-css-vars.mjs"
   }
