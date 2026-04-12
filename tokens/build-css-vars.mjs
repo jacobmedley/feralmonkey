@@ -1,0 +1,85 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const root = process.cwd();
+
+function readJson(filePath) {
+  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+}
+
+const primitives = readJson(path.join(root, "tokens/primitives.json"));
+const semantics = readJson(path.join(root, "tokens/semantics.json"));
+const defaultTheme = readJson(path.join(root, "tokens/themes/default.json"));
+
+const sources = {
+  primitives,
+  semantics,
+  theme: defaultTheme,
+};
+
+function getByPath(obj, refPath) {
+  return refPath.split(".").reduce((acc, key) => acc?.[key], obj);
+}
+
+function resolveReference(ref, stack = []) {
+  if (typeof ref !== "string") return ref;
+
+  const match = ref.match(/^\{(.+)\}$/);
+  if (!match) return ref;
+
+  const refPath = match[1];
+
+  if (stack.includes(refPath)) {
+    throw new Error(`Circular token reference: ${[...stack, refPath].join(" -> ")}`);
+  }
+
+  const [sourceName, ...rest] = refPath.split(".");
+  const source = sources[sourceName];
+
+  if (!source) {
+    throw new Error(`Unknown token source: ${sourceName} in ${ref}`);
+  }
+
+  const value = getByPath(source, rest.join("."));
+
+  if (value === undefined) {
+    throw new Error(`Unable to resolve token reference: ${ref}`);
+  }
+
+  if (typeof value === "string" && /^\{.+\}$/.test(value)) {
+    return resolveReference(value, [...stack, refPath]);
+  }
+
+  return value;
+}
+
+const themeResolved = {};
+for (const [key, value] of Object.entries(defaultTheme)) {
+  themeResolved[key] = resolveReference(value);
+}
+
+const lines = [];
+lines.push(":root {");
+
+for (const [key, value] of Object.entries(themeResolved)) {
+  lines.push(`  --${key}: ${value};`);
+}
+
+const radius = primitives.radius ?? {};
+if (radius.sm) lines.push(`  --radius-sm: ${radius.sm};`);
+if (radius.md) lines.push(`  --radius-md: ${radius.md};`);
+if (radius.lg) lines.push(`  --radius-lg: ${radius.lg};`);
+if (radius.xl) lines.push(`  --radius-xl: ${radius.xl};`);
+if (radius.lg) lines.push(`  --radius: ${radius.lg};`);
+
+lines.push("}");
+
+const output = lines.join("\n") + "\n";
+
+const outDir = path.join(root, "apps/web/src/styles");
+fs.mkdirSync(outDir, { recursive: true });
+
+const outFile = path.join(outDir, "fmds-tokens.css");
+fs.writeFileSync(outFile, output, "utf8");
+
+console.log(`Wrote ${outFile}`);

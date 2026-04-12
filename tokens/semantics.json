@@ -1,29 +1,43 @@
 {
-  "background": "{color.white}",
-  "foreground": "{color.slate.950}",
+  "background": "{primitives.color.white}",
+  "foreground": "{primitives.color.slate.950}",
 
-  "card": "{color.white}",
-  "card.foreground": "{color.slate.950}",
+  "card": {
+    "DEFAULT": "{primitives.color.white}",
+    "foreground": "{primitives.color.slate.950}"
+  },
 
-  "popover": "{color.white}",
-  "popover.foreground": "{color.slate.950}",
+  "popover": {
+    "DEFAULT": "{primitives.color.white}",
+    "foreground": "{primitives.color.slate.950}"
+  },
 
-  "primary": "{color.slate.900}",
-  "primary.foreground": "{color.white}",
+  "primary": {
+    "DEFAULT": "{primitives.color.slate.900}",
+    "foreground": "{primitives.color.white}"
+  },
 
-  "secondary": "{color.slate.100}",
-  "secondary.foreground": "{color.slate.900}",
+  "secondary": {
+    "DEFAULT": "{primitives.color.slate.100}",
+    "foreground": "{primitives.color.slate.900}"
+  },
 
-  "muted": "{color.slate.100}",
-  "muted.foreground": "{color.slate.500}",
+  "muted": {
+    "DEFAULT": "{primitives.color.slate.100}",
+    "foreground": "{primitives.color.slate.500}"
+  },
 
-  "accent": "{color.slate.100}",
-  "accent.foreground": "{color.slate.900}",
+  "accent": {
+    "DEFAULT": "{primitives.color.slate.100}",
+    "foreground": "{primitives.color.slate.900}"
+  },
 
-  "destructive": "{color.red.500}",
-  "destructive.foreground": "{color.white}",
+  "destructive": {
+    "DEFAULT": "{primitives.color.red.500}",
+    "foreground": "{primitives.color.white}"
+  },
 
-  "border": "{color.slate.200}",
-  "input": "{color.slate.200}",
-  "ring": "{color.blue.500}"
+  "border": "{primitives.color.slate.200}",
+  "input": "{primitives.color.slate.200}",
+  "ring": "{primitives.color.blue.500}"
 }

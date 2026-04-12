@@ -1,0 +1,7 @@
+{
+  "name": "feralmonkey",
+  "private": true,
+  "scripts": {
+    "tokens:build": "node tokens/build-css-vars.mjs"
+  }
+}

@@ -1,29 +1,29 @@
 {
-  "background": "{background}",
-  "foreground": "{foreground}",
+  "background": "{semantics.background}",
+  "foreground": "{semantics.foreground}",
 
-  "card": "{card}",
-  "card-foreground": "{card.foreground}",
+  "card": "{semantics.card.DEFAULT}",
+  "card-foreground": "{semantics.card.foreground}",
 
-  "popover": "{popover}",
-  "popover-foreground": "{popover.foreground}",
+  "popover": "{semantics.popover.DEFAULT}",
+  "popover-foreground": "{semantics.popover.foreground}",
 
-  "primary": "{primary}",
-  "primary-foreground": "{primary.foreground}",
+  "primary": "{semantics.primary.DEFAULT}",
+  "primary-foreground": "{semantics.primary.foreground}",
 
-  "secondary": "{secondary}",
-  "secondary-foreground": "{secondary.foreground}",
+  "secondary": "{semantics.secondary.DEFAULT}",
+  "secondary-foreground": "{semantics.secondary.foreground}",
 
-  "muted": "{muted}",
-  "muted-foreground": "{muted.foreground}",
+  "muted": "{semantics.muted.DEFAULT}",
+  "muted-foreground": "{semantics.muted.foreground}",
 
-  "accent": "{accent}",
-  "accent-foreground": "{accent.foreground}",
+  "accent": "{semantics.accent.DEFAULT}",
+  "accent-foreground": "{semantics.accent.foreground}",
 
-  "destructive": "{destructive}",
-  "destructive-foreground": "{destructive.foreground}",
+  "destructive": "{semantics.destructive.DEFAULT}",
+  "destructive-foreground": "{semantics.destructive.foreground}",
 
-  "border": "{border}",
-  "input": "{input}",
-  "ring": "{ring}"
+  "border": "{semantics.border}",
+  "input": "{semantics.input}",
+  "ring": "{semantics.ring}"
 }
