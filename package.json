@@ -6,7 +6,9 @@
     "packages/*"
   ],
   "scripts": {
-    "tokens:build": "node tokens/build-css-vars.mjs"
+    "tokens:build": "node tokens/build-css-vars.mjs",
+    "tokens:watch": "node --watch tokens/build-css-vars.mjs",
+    "prebuild": "npm run tokens:build"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
