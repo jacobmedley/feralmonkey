@@ -1,13 +1,11 @@
-/* FMDS system wiring:
+/* FMDS docs wiring:
    - imports generated token CSS variables
    - loads Tailwind v4
    - includes shared UI package as a Tailwind source
 */
-
 @import "../styles/fmds-tokens.css";
 @import "tailwindcss";
 @source "../../../../packages/ui/src";
-
 
 :root {
   color-scheme: light;
