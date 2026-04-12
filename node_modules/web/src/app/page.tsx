@@ -1,30 +1,46 @@
-import { Button } from "@fmds/ui";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+  Input,
+} from "@fmds/ui";
 
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-background text-foreground p-8">
-      <div className="mx-auto max-w-3xl space-y-6">
-        <div className="rounded-lg border border-border bg-card p-6 text-card-foreground shadow-sm">
-          <h1 className="text-3xl font-semibold">FMDS Button Test</h1>
-          <p className="mt-2 text-muted-foreground">
-            The design tokens are wired, and the first FMDS component is now using them.
-          </p>
-        </div>
+      <div className="mx-auto max-w-4xl space-y-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>FMDS Foundation Test</CardTitle>
+            <CardDescription>
+              Button, Input, and Card are now rendering from the shared UI package.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="flex flex-wrap gap-4">
+              <Button>Primary</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="accent">Accent</Button>
+              <Button variant="destructive">Destructive</Button>
+              <Button variant="outline">Outline</Button>
+              <Button variant="ghost">Ghost</Button>
+            </div>
 
-        <div className="flex flex-wrap gap-4">
-          <Button>Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="accent">Accent</Button>
-          <Button variant="destructive">Destructive</Button>
-          <Button variant="outline">Outline</Button>
-          <Button variant="ghost">Ghost</Button>
-        </div>
+            <div className="flex flex-wrap gap-4">
+              <Button size="sm">Small</Button>
+              <Button size="default">Default</Button>
+              <Button size="lg">Large</Button>
+            </div>
 
-        <div className="flex flex-wrap gap-4">
-          <Button size="sm">Small</Button>
-          <Button size="default">Default</Button>
-          <Button size="lg">Large</Button>
-        </div>
+            <div className="max-w-md space-y-2">
+              <label className="text-sm font-medium">Email</label>
+              <Input type="email" placeholder="name@example.com" />
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </main>
   );
