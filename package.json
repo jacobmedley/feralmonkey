@@ -7,5 +7,9 @@
   ],
   "scripts": {
     "tokens:build": "node tokens/build-css-vars.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "tailwindcss": "^4"
   }
 }
