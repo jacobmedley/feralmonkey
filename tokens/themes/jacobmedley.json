@@ -1,1 +1,29 @@
-{}
+{
+  "background": "{primitives.color.white}",
+  "foreground": "{primitives.color.charcoal}",
+
+  "card": "{primitives.color.white}",
+  "card-foreground": "{primitives.color.charcoal}",
+
+  "popover": "{primitives.color.white}",
+  "popover-foreground": "{primitives.color.charcoal}",
+
+  "primary": "{primitives.color.english-violet}",
+  "primary-foreground": "{primitives.color.white}",
+
+  "secondary": "{primitives.color.faded-glory}",
+  "secondary-foreground": "{primitives.color.white}",
+
+  "muted": "{primitives.color.silver-chalice}",
+  "muted-foreground": "{primitives.color.charcoal}",
+
+  "accent": "{primitives.color.monarch}",
+  "accent-foreground": "{primitives.color.charcoal}",
+
+  "destructive": "{primitives.color.red-falling}",
+  "destructive-foreground": "{primitives.color.white}",
+
+  "border": "{primitives.color.silver-chalice}",
+  "input": "{primitives.color.silver-chalice}",
+  "ring": "{primitives.color.monarch}"
+}

@@ -53,28 +53,42 @@ function resolveReference(ref, stack = []) {
   return value;
 }
 
-const themeResolved = {};
-for (const [key, value] of Object.entries(defaultTheme)) {
-  themeResolved[key] = resolveReference(value);
+const themesDir = path.join(root, "tokens/themes");
+const themeFiles = fs.readdirSync(themesDir).filter((f) => f.endsWith(".json"));
+
+const blocks = [];
+
+for (const file of themeFiles) {
+  const themeName = path.basename(file, ".json");
+  const theme = readJson(path.join(themesDir, file));
+
+  const themeResolved = {};
+  for (const [key, value] of Object.entries(theme)) {
+    themeResolved[key] = resolveReference(value);
+  }
+
+  const selector = themeName === "default" ? ":root" : `[data-theme='${themeName}']`;
+  const lines = [];
+  lines.push(`${selector} {`);
+
+  for (const [key, value] of Object.entries(themeResolved)) {
+    lines.push(`  --${key}: ${value};`);
+  }
+
+  if (themeName === "default") {
+    const radius = primitives.radius ?? {};
+    if (radius.sm) lines.push(`  --radius-sm: ${radius.sm};`);
+    if (radius.md) lines.push(`  --radius-md: ${radius.md};`);
+    if (radius.lg) lines.push(`  --radius-lg: ${radius.lg};`);
+    if (radius.xl) lines.push(`  --radius-xl: ${radius.xl};`);
+    if (radius.lg) lines.push(`  --radius: ${radius.lg};`);
+  }
+
+  lines.push("}");
+  blocks.push(lines.join("\n"));
 }
 
-const lines = [];
-lines.push(":root {");
-
-for (const [key, value] of Object.entries(themeResolved)) {
-  lines.push(`  --${key}: ${value};`);
-}
-
-const radius = primitives.radius ?? {};
-if (radius.sm) lines.push(`  --radius-sm: ${radius.sm};`);
-if (radius.md) lines.push(`  --radius-md: ${radius.md};`);
-if (radius.lg) lines.push(`  --radius-lg: ${radius.lg};`);
-if (radius.xl) lines.push(`  --radius-xl: ${radius.xl};`);
-if (radius.lg) lines.push(`  --radius: ${radius.lg};`);
-
-lines.push("}");
-
-const output = lines.join("\n") + "\n";
+const output = blocks.join("\n\n") + "\n";
 
 const targets = [
   "apps/web/src/styles",

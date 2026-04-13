@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "tokens:build": "node ../../tokens/build-css-vars.mjs",
+    "build": "npm run tokens:build && next build",
     "start": "next start",
     "lint": "eslint"
   },

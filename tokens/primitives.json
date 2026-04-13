@@ -21,7 +21,14 @@
     },
     "red": {
       "500": "0 84% 60%"
-    }
+    },
+    "english-violet": "281 24% 36%",
+    "monarch": "46 86% 48%",
+    "faded-glory": "214 15% 58%",
+    "irish-stone": "119 22% 47%",
+    "red-falling": "0 43% 35%",
+    "silver-chalice": "84 3% 67%",
+    "charcoal": "52 12% 24%"
   },
   "radius": {
     "sm": "4px",

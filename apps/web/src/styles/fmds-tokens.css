@@ -24,3 +24,25 @@
   --radius-xl: 12px;
   --radius: 8px;
 }
+
+[data-theme='jacobmedley'] {
+  --background: 0 0% 100%;
+  --foreground: 52 12% 24%;
+  --card: 0 0% 100%;
+  --card-foreground: 52 12% 24%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 52 12% 24%;
+  --primary: 281 24% 36%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 214 15% 58%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 84 3% 67%;
+  --muted-foreground: 52 12% 24%;
+  --accent: 46 86% 48%;
+  --accent-foreground: 52 12% 24%;
+  --destructive: 0 43% 35%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 84 3% 67%;
+  --input: 84 3% 67%;
+  --ring: 46 86% 48%;
+}

@@ -1,3 +1,3 @@
-export * from "./components/button";
-export * from "./components/input";
+export * from "./controls/button";
+export * from "./controls/input";
 export * from "./components/card";
