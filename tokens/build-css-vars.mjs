@@ -82,6 +82,11 @@ for (const file of themeFiles) {
     if (radius.lg) lines.push(`  --radius-lg: ${radius.lg};`);
     if (radius.xl) lines.push(`  --radius-xl: ${radius.xl};`);
     if (radius.lg) lines.push(`  --radius: ${radius.lg};`);
+
+    const fontSize = primitives.fontSize ?? {};
+    for (const [key, value] of Object.entries(fontSize)) {
+      lines.push(`  --font-size-${key}: ${value};`);
+    }
   }
 
   lines.push("}");

@@ -12,8 +12,10 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.12",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "lucide-react": "^1.8.0",
     "tailwind-merge": "^3.5.0"
   },
   "peerDependencies": {

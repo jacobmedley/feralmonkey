@@ -8,6 +8,13 @@ Claude should read this file first, then use the linked docs below to understand
 
 ---
 
+## Do Not Do Without Explicit Approval
+- restructure the packages/ directory
+- add new packages to the monorepo
+- change import paths across apps
+- modify workspace config in root package.json
+- run any task that touches more than one package boundary at once
+
 ## 1. Project Overview
 
 FMDS is an open-source design system intended to create strict parity between design (Figma) and code.
