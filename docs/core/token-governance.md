@@ -181,8 +181,13 @@ The core semantic token set includes:
 - `input`
 - `ring`
 
+- `font-family-base`
+- `font-family-heading`
+- `font-family-mono`
+
 ### 4.4 Extended Semantic Tokens
-Allowed later if needed:
+The following are part of the core semantic set:
+
 - `success`
 - `success.foreground`
 - `warning`
@@ -190,7 +195,19 @@ Allowed later if needed:
 - `info`
 - `info.foreground`
 
-These must be added intentionally, not ad hoc.
+Required by Alert, Badge, Toast, and all feedback components. Not optional.
+
+### 4.5 Typography Layer Split
+
+Font size scale is a primitive constant. It does not change across themes.
+
+Font family, weight, and spacing are semantic and theme variables. Themes override these to express brand identity.
+
+| Layer | Controls |
+|---|---|
+| Primitive | font size scale (xs → 5xl) |
+| Semantic | font family intent (base, heading, mono) |
+| Theme | brand font stacks, weight overrides |
 
 ---
 

@@ -25,5 +25,18 @@
 
   "border": "{primitives.color.silver-chalice}",
   "input": "{primitives.color.silver-chalice}",
-  "ring": "{primitives.color.monarch}"
+  "ring": "{primitives.color.monarch}",
+
+  "font-family-base": "urw-form, 'Manrope', sans-serif",
+  "font-family-heading": "urw-form, sans-serif",
+  "font-family-mono": "{primitives.fontFamily.mono}",
+
+  "success": "{primitives.color.irish-stone}",
+  "success-foreground": "{primitives.color.white}",
+
+  "warning": "{primitives.color.monarch}",
+  "warning-foreground": "{primitives.color.charcoal}",
+
+  "info": "{primitives.color.faded-glory}",
+  "info-foreground": "{primitives.color.charcoal}"
 }

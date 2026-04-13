@@ -58,6 +58,16 @@
 
 ---
 
+## 7. Do Not Do Without Explicit Approval
+
+- restructure the packages/ directory
+- add new packages to the monorepo
+- change import paths across apps
+- modify workspace config in root package.json
+- run any task that touches more than one package boundary at once
+
+---
+
 ## 7. Red Flags
 
 If Claude suggests:

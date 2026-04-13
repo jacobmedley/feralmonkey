@@ -40,36 +40,38 @@ tokens
 
 ## 3. Current State
 
-- Tokens system: working
-- CSS variable build: working
+- Token pipeline: complete, automated, multi-output
+- CSS variable build: complete — `npm run tokens:build` generates output for all apps
 - Tailwind wiring: working (manual, intentional)
-- UI package: working
+- UI package: Button complete, Accordion complete, Alert in progress
 - Docs app: working but partially manual
-- Theme system: single theme complete, multi-theme partial
+- Theme system: complete — both themes fully populated (default + jacobmedley)
 
 ---
 
 ## 4. Immediate Priorities
 
 ### Priority 1 — Token Pipeline Consistency
+**STATUS: DONE**
 
-- eliminate manual token CSS copying
-- generate outputs for all apps
-- ensure single source token output
+- token CSS generated automatically via `npm run tokens:build`
+- outputs to all apps on every build
+- single source, multi-output
 
 ---
 
 ### Priority 2 — Theme System Completion
+**STATUS: DONE**
 
-- fully support:
-  - `default`
-  - `jacobmedley`
-- validate theme switching
-- enforce semantic consistency across themes
+- `default` and `jacobmedley` fully populated
+- theme switching validated in apps/web
+- semantic consistency enforced across both themes
 
 ---
 
 ### Priority 3 — Docs Integrity
+
+Still pending.
 
 Docs must:
 - use real components
@@ -83,16 +85,18 @@ Add:
 ---
 
 ### Priority 4 — Component Expansion
+**STATUS: In progress**
 
-Current:
-- Button
+Complete:
+- Button (all variants, sizes, states, both themes)
 - Input
 - Card
+- Accordion
 
-Next:
-- layout primitives
-- form system
-- feedback components
+In progress:
+- Alert
+
+Standard: every component must pass the component checklist before the next begins.
 
 ---
 

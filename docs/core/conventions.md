@@ -75,3 +75,29 @@ packages/ui/src/index.ts
 - real usage examples
 - copy-paste ready code
 - no fake/demo-only UI
+
+---
+
+## 10. Component Naming Layer
+
+| Layer | Description |
+|---|---|
+| Elements | smallest visual unit, no logic |
+| Controls | interactive single-purpose unit |
+| Components | composed UI blocks |
+| Templates | page-level layout patterns |
+| Pages | real routes with real data |
+
+---
+
+## 11. Component Checklist
+
+Before marking any component complete:
+
+- [ ] all variants implemented
+- [ ] all sizes implemented
+- [ ] all states: hover, focus, active, disabled
+- [ ] semantic tokens only, no hardcoded values
+- [ ] both themes verified in browser
+- [ ] exported from packages/ui/src/index.ts
+- [ ] demo in apps/web

@@ -37,7 +37,28 @@
     "foreground": "{primitives.color.white}"
   },
 
+  "fontFamily": {
+    "base": "{primitives.fontFamily.sans}",
+    "heading": "{primitives.fontFamily.sans}",
+    "mono": "{primitives.fontFamily.mono}"
+  },
+
   "border": "{primitives.color.slate.200}",
   "input": "{primitives.color.slate.200}",
-  "ring": "{primitives.color.blue.500}"
+  "ring": "{primitives.color.blue.500}",
+
+  "success": {
+    "DEFAULT": "{primitives.color.green.600}",
+    "foreground": "{primitives.color.white}"
+  },
+
+  "warning": {
+    "DEFAULT": "{primitives.color.amber.500}",
+    "foreground": "{primitives.color.slate.900}"
+  },
+
+  "info": {
+    "DEFAULT": "{primitives.color.blue.500}",
+    "foreground": "{primitives.color.white}"
+  }
 }

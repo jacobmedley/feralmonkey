@@ -87,6 +87,21 @@ for (const file of themeFiles) {
     for (const [key, value] of Object.entries(fontSize)) {
       lines.push(`  --font-size-${key}: ${value};`);
     }
+
+    const fontFamily = primitives.fontFamily ?? {};
+    for (const [key, value] of Object.entries(fontFamily)) {
+      lines.push(`  --font-family-${key}: ${value};`);
+    }
+
+    const lineHeight = primitives.lineHeight ?? {};
+    for (const [key, value] of Object.entries(lineHeight)) {
+      lines.push(`  --line-height-${key}: ${value};`);
+    }
+
+    const fontWeight = primitives.fontWeight ?? {};
+    for (const [key, value] of Object.entries(fontWeight)) {
+      lines.push(`  --font-weight-${key}: ${value};`);
+    }
   }
 
   lines.push("}");

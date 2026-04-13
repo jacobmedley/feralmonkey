@@ -3,6 +3,9 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
+  Alert,
+  AlertDescription,
+  AlertTitle,
   Button,
   Card,
   CardContent,
@@ -67,6 +70,56 @@ export default function HomePage() {
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Alert</CardTitle>
+            <CardDescription>
+              All 5 variants × 3 sizes. Icon slot shown on the default variant.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* All variants — default size */}
+            <div className="space-y-3">
+              <Alert variant="default" icon={<span>ℹ</span>}>
+                <AlertTitle>Default alert</AlertTitle>
+                <AlertDescription>This is a default alert with an icon slot.</AlertDescription>
+              </Alert>
+              <Alert variant="destructive">
+                <AlertTitle>Destructive alert</AlertTitle>
+                <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+              </Alert>
+              <Alert variant="success">
+                <AlertTitle>Success alert</AlertTitle>
+                <AlertDescription>Your changes have been saved successfully.</AlertDescription>
+              </Alert>
+              <Alert variant="warning">
+                <AlertTitle>Warning alert</AlertTitle>
+                <AlertDescription>This action cannot be undone.</AlertDescription>
+              </Alert>
+              <Alert variant="info">
+                <AlertTitle>Info alert</AlertTitle>
+                <AlertDescription>Here is some helpful information.</AlertDescription>
+              </Alert>
+            </div>
+
+            {/* Size variants — success variant */}
+            <div className="space-y-3">
+              <Alert variant="success" size="sm">
+                <AlertTitle>Small success</AlertTitle>
+                <AlertDescription>Size sm — text-xs py-2 px-3.</AlertDescription>
+              </Alert>
+              <Alert variant="success" size="default">
+                <AlertTitle>Default success</AlertTitle>
+                <AlertDescription>Size default — text-sm py-3 px-4.</AlertDescription>
+              </Alert>
+              <Alert variant="success" size="lg">
+                <AlertTitle>Large success</AlertTitle>
+                <AlertDescription>Size lg — text-base py-4 px-5.</AlertDescription>
+              </Alert>
+            </div>
           </CardContent>
         </Card>
       </div>

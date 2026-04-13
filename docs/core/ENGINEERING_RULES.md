@@ -92,6 +92,32 @@ Do not:
 
 ---
 
+### fontFamily Token Layer
+
+fontFamily belongs in the semantic and theme layers, not primitives alone.
+
+- primitives define available font stack values
+- semantics name the intent (base, heading, mono)
+- themes override to brand-specific fonts per tenant
+
+---
+
+### Extended Semantic Tokens
+
+success, warning, and info (with foreground pairs) are part of the core semantic set.
+
+They are not optional extensions. Required by Alert, Badge, Toast, and all feedback components.
+
+---
+
+### Typography Primitives Are Constants
+
+Font size scale is defined in primitives and does not change across themes.
+
+The theme layer controls brand expression: font family, weight, and spacing overrides only.
+
+---
+
 ## 4. Theme Rules
 
 Themes must:
@@ -166,6 +192,21 @@ Docs must:
 4. export
 5. test in apps
 6. document
+
+---
+
+### Component Completion Standard
+
+No component moves to the next until fully complete.
+
+Checklist:
+- variants ✓
+- sizes ✓
+- states: hover, focus, active, disabled ✓
+- semantic tokens only, no hardcoded values ✓
+- both themes verified in browser ✓
+- exported from packages/ui/src/index.ts ✓
+- demo in apps/web ✓
 
 ---
 

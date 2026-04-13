@@ -19,6 +19,12 @@
       "500": "221 83% 53%",
       "600": "221 83% 45%"
     },
+    "green": {
+      "600": "142 76% 36%"
+    },
+    "amber": {
+      "500": "38 92% 50%"
+    },
     "red": {
       "500": "0 84% 60%"
     },
@@ -35,6 +41,26 @@
     "md": "6px",
     "lg": "8px",
     "xl": "12px"
+  },
+  "fontFamily": {
+    "sans": "ui-sans-serif, system-ui, sans-serif",
+    "serif": "ui-serif, Georgia, serif",
+    "mono": "ui-monospace, monospace"
+  },
+  "lineHeight": {
+    "tight": 1.25,
+    "snug": 1.375,
+    "normal": 1.5,
+    "relaxed": 1.625,
+    "loose": 2
+  },
+  "fontWeight": {
+    "light": 300,
+    "normal": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+    "extrabold": 800
   },
   "fontSize": {
     "xs": "0.75rem",

@@ -25,5 +25,18 @@
 
   "border": "{semantics.border}",
   "input": "{semantics.input}",
-  "ring": "{semantics.ring}"
+  "ring": "{semantics.ring}",
+
+  "font-family-base": "{semantics.fontFamily.base}",
+  "font-family-heading": "{semantics.fontFamily.heading}",
+  "font-family-mono": "{semantics.fontFamily.mono}",
+
+  "success": "{semantics.success.DEFAULT}",
+  "success-foreground": "{semantics.success.foreground}",
+
+  "warning": "{semantics.warning.DEFAULT}",
+  "warning-foreground": "{semantics.warning.foreground}",
+
+  "info": "{semantics.info.DEFAULT}",
+  "info-foreground": "{semantics.info.foreground}"
 }

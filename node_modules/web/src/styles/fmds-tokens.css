@@ -18,6 +18,15 @@
   --border: 214 32% 91%;
   --input: 214 32% 91%;
   --ring: 221 83% 53%;
+  --font-family-base: ui-sans-serif, system-ui, sans-serif;
+  --font-family-heading: ui-sans-serif, system-ui, sans-serif;
+  --font-family-mono: ui-monospace, monospace;
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 222 47% 11%;
+  --info: 221 83% 53%;
+  --info-foreground: 0 0% 100%;
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 8px;
@@ -32,6 +41,20 @@
   --font-size-3xl: 1.875rem;
   --font-size-4xl: 2.25rem;
   --font-size-5xl: 3rem;
+  --font-family-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-family-serif: ui-serif, Georgia, serif;
+  --font-family-mono: ui-monospace, monospace;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
 }
 
 [data-theme='jacobmedley'] {
@@ -54,4 +77,13 @@
   --border: 84 3% 67%;
   --input: 84 3% 67%;
   --ring: 46 86% 48%;
+  --font-family-base: urw-form, 'Manrope', sans-serif;
+  --font-family-heading: urw-form, sans-serif;
+  --font-family-mono: ui-monospace, monospace;
+  --success: 119 22% 47%;
+  --success-foreground: 0 0% 100%;
+  --warning: 46 86% 48%;
+  --warning-foreground: 52 12% 24%;
+  --info: 214 15% 58%;
+  --info-foreground: 52 12% 24%;
 }
