@@ -1,0 +1,42 @@
+{
+  "background": "{primitives.color.white}",
+  "foreground": "{primitives.color.blue.900}",
+
+  "card": "{primitives.color.white}",
+  "card-foreground": "{primitives.color.blue.900}",
+
+  "popover": "{primitives.color.white}",
+  "popover-foreground": "{primitives.color.blue.900}",
+
+  "primary": "{primitives.color.radical-red}",
+  "primary-foreground": "{primitives.color.white}",
+
+  "secondary": "{primitives.color.blue.900}",
+  "secondary-foreground": "{primitives.color.white}",
+
+  "muted": "{primitives.color.grey.50}",
+  "muted-foreground": "{primitives.color.grey.600}",
+
+  "accent": "{primitives.color.teal.800}",
+  "accent-foreground": "{primitives.color.white}",
+
+  "destructive": "{primitives.color.red.500}",
+  "destructive-foreground": "{primitives.color.white}",
+
+  "border": "{primitives.color.grey.200}",
+  "input": "{primitives.color.grey.200}",
+  "ring": "{primitives.color.radical-red}",
+
+  "font-family-base": "{primitives.font.family.wt-volkolak}",
+  "font-family-heading": "{primitives.font.family.wt-volkolak-sans}",
+  "font-family-mono": "{primitives.font.family.lato}",
+
+  "success": "{primitives.color.green.700}",
+  "success-foreground": "{primitives.color.white}",
+
+  "warning": "{primitives.color.yellow.200}",
+  "warning-foreground": "{primitives.color.blue.900}",
+
+  "info": "{primitives.color.blue.600}",
+  "info-foreground": "{primitives.color.white}"
+}
