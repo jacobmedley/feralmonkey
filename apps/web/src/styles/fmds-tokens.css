@@ -13,13 +13,13 @@
   --muted-foreground: 215 16% 47%;
   --accent: 210 40% 96%;
   --accent-foreground: 222 47% 11%;
-  --destructive: 0 84% 60%;
+  --destructive: 345 59% 52%;
   --destructive-foreground: 0 0% 100%;
   --border: 214 32% 91%;
   --input: 214 32% 91%;
   --ring: 221 83% 53%;
-  --font-family-base: ui-sans-serif, system-ui, sans-serif;
-  --font-family-heading: ui-sans-serif, system-ui, sans-serif;
+  --font-family-base: var(--font-base-default);
+  --font-family-heading: var(--font-base-default);
   --font-family-mono: ui-monospace, monospace;
   --success: 142 76% 36%;
   --success-foreground: 0 0% 100%;
@@ -57,33 +57,95 @@
   --font-weight-extrabold: 800;
 }
 
-[data-theme='jacobmedley'] {
+[data-theme='theme1'] {
   --background: 0 0% 100%;
-  --foreground: 52 12% 24%;
+  --foreground: 217 55% 17%;
   --card: 0 0% 100%;
-  --card-foreground: 52 12% 24%;
+  --card-foreground: 217 55% 17%;
   --popover: 0 0% 100%;
-  --popover-foreground: 52 12% 24%;
-  --primary: 281 24% 36%;
+  --popover-foreground: 217 55% 17%;
+  --primary: 346 100% 58%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 214 15% 58%;
+  --secondary: 217 55% 17%;
   --secondary-foreground: 0 0% 100%;
-  --muted: 84 3% 67%;
-  --muted-foreground: 52 12% 24%;
-  --accent: 46 86% 48%;
-  --accent-foreground: 52 12% 24%;
-  --destructive: 0 43% 35%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 198 100% 20%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 345 59% 52%;
   --destructive-foreground: 0 0% 100%;
-  --border: 84 3% 67%;
-  --input: 84 3% 67%;
-  --ring: 46 86% 48%;
-  --font-family-base: urw-form, 'Manrope', sans-serif;
-  --font-family-heading: urw-form, sans-serif;
-  --font-family-mono: ui-monospace, monospace;
-  --success: 119 22% 47%;
+  --border: 0 0% 80%;
+  --input: 0 0% 80%;
+  --ring: 346 100% 58%;
+  --font-family-base: var(--font-base-theme1);
+  --font-family-heading: var(--font-base-theme1);
+  --font-family-mono: 'Lato', sans-serif;
+  --success: 156 74% 27%;
   --success-foreground: 0 0% 100%;
-  --warning: 46 86% 48%;
-  --warning-foreground: 52 12% 24%;
-  --info: 214 15% 58%;
-  --info-foreground: 52 12% 24%;
+  --warning: 47 100% 81%;
+  --warning-foreground: 217 55% 17%;
+  --info: 217 65% 40%;
+  --info-foreground: 0 0% 100%;
+}
+
+[data-theme='theme2'] {
+  --background: 0 0% 100%;
+  --foreground: 217 55% 17%;
+  --card: 0 0% 100%;
+  --card-foreground: 217 55% 17%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 217 55% 17%;
+  --primary: 252 39% 44%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217 55% 17%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 300 47% 96%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 168 59% 33%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 345 59% 52%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 80%;
+  --input: 0 0% 80%;
+  --ring: 252 39% 44%;
+  --font-family-base: var(--font-base-theme2);
+  --font-family-heading: var(--font-base-theme2);
+  --font-family-mono: 'Lato', sans-serif;
+  --success: 156 74% 27%;
+  --success-foreground: 0 0% 100%;
+  --warning: 47 100% 81%;
+  --warning-foreground: 217 55% 17%;
+  --info: 252 34% 63%;
+  --info-foreground: 0 0% 100%;
+}
+
+[data-theme='theme3'] {
+  --background: 222 84% 5%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 38 92% 50%;
+  --primary-foreground: 222 84% 5%;
+  --secondary: 215 25% 27%;
+  --secondary-foreground: 214 32% 91%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 192 91% 52%;
+  --accent-foreground: 222 84% 5%;
+  --destructive: 345 59% 52%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 215 25% 27%;
+  --input: 215 25% 27%;
+  --ring: 38 92% 50%;
+  --font-family-base: var(--font-base-theme3);
+  --font-family-heading: var(--font-base-theme3);
+  --font-family-mono: ui-monospace, monospace;
+  --success: 142 76% 36%;
+  --success-foreground: 0 0% 100%;
+  --warning: 38 92% 50%;
+  --warning-foreground: 222 84% 5%;
+  --info: 192 91% 52%;
+  --info-foreground: 222 84% 5%;
 }

@@ -66,7 +66,7 @@ export default function HomePage() {
               <AccordionItem value="item-3">
                 <AccordionTrigger>Can it be styled per theme?</AccordionTrigger>
                 <AccordionContent>
-                  Yes. Switch to the jacobmedley theme using the button in the top-right corner.
+                  Yes. Switch to Theme 3 using the button in the top-right corner.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
