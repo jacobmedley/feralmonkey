@@ -1,64 +1,27 @@
 # FMDS Handoff — figma-to-code-demo branch
 
-**Date:** 2026-04-25  
+**Date:** 2026-04-27  
 **Branch:** `figma-to-code-demo`  
 **Repo:** jacobmedley/feralmonkey
 
 ---
 
-## What Was Done This Session
+## Sessions Summary
 
-### 1. Fixed stale node_modules git artifacts
+### Session — 2026-04-25
 
-`node_modules/@fmds/ui` and `node_modules/web` were accidentally tracked as real
-directories (not symlinks), which caused `@fmds/ui` components to fail to resolve
-at dev-server startup. Removed all tracked node_modules entries and ran `npm install`
-to restore the proper workspace symlinks.
+1. Fixed stale node_modules git artifacts (`@fmds/ui` symlinks)
+2. Fixed button.tsx export collision (removed shadcn scaffold, kept FMDS custom)
+3. Confirmed shadcn token mapping via `globals.css @theme inline` (Option A)
+4. Updated token build to handle W3C DTCG format (unwrap `theme`, extract `$value`)
+5. Wired Figma import pipeline (`tokens/import-figma.mjs` → `tokens/themes/figma-default.json`)
 
-### 2. Fixed button.tsx export collision
+### Session — 2026-04-27
 
-Two `Button` components existed:
-- `packages/ui/src/controls/button.tsx` — FMDS custom, token-driven (kept)
-- `packages/ui/src/components/button.tsx` — shadcn scaffold (removed)
-
-`buttonVariants` is now exported from `controls/button.tsx`. `pagination.tsx` and
-`alert-dialog.tsx` were updated to import from `../controls/button`.
-
-### 3. Confirmed token mapping for shadcn components (Option A)
-
-Shadcn components use CSS variable names like `bg-popover`, `text-muted-foreground`,
-etc. The `globals.css` `@theme inline` block already maps all FMDS token vars to
-Tailwind v4 color utilities. No additional work needed — shadcn components render
-correctly with FMDS themes.
-
-### 4. Updated token build to handle DTCG format
-
-Theme files (`tokens/themes/*.json`) were updated to W3C DTCG format:
-```json
-{ "theme": { "background": { "$type": "color", "$value": "#FFFFFF" } } }
-```
-
-`tokens/build-css-vars.mjs` was updated to:
-- Unwrap the top-level `"theme"` wrapper
-- Extract `$value` from DTCG token objects
-- Convert hex colors to HSL (`"H S% L%"`) for Tailwind compatibility
-- Append `px` units to numeric radius tokens
-- Resolve `{color.X}` and `{radius.X}` references directly from primitives
-- Remove duplicate `--radius` emission from the primitives block
-
-### 5. Wired Figma tokens into build pipeline
-
-`tokens/import-figma.mjs` — new script that:
-- Reads `figma-tokens/Default.tokens.json` (raw Figma variable export)
-- Resolves internal `{color.X.Y}` references within the Figma file
-- Converts sRGB component values to hex
-- Writes `tokens/themes/figma-default.json` in DTCG format
-
-Two new npm scripts in root `package.json`:
-- `npm run tokens:import-figma` — run the Figma import step
-- `npm run tokens:sync` — import from Figma then build CSS vars
-
-The `figma-default` theme is now live and available as `data-theme="figma-default"`.
+1. **Full component showcase** — `/demo` page with all 35+ components and a 4-theme switcher (default, fsa, hsa, patiently)
+2. **Figma import JSON generated** — `figma-tokens/fmds-tokens.json` in Tokens Studio format; import via Tokens Studio plugin to sync FMDS tokens into Figma
+3. **Generator script** — `tokens/generate-figma-import.mjs` (re-run anytime tokens change to regenerate)
+4. **Confirmed all 4 themes** in DTCG format with hex values — `default`, `fsa`, `hsa`, `patiently`
 
 ---
 
@@ -66,63 +29,58 @@ The `figma-default` theme is now live and available as `data-theme="figma-defaul
 
 | Area | Status |
 |------|--------|
-| Dev server | `npm run dev --workspace=apps/web` → http://localhost:3000 |
-| `@fmds/ui` components | All shadcn components wired, button collision resolved |
-| Token build | Working — DTCG format, hex→HSL conversion, `{color.X}` refs |
-| Token themes | `default`, `fsa`, `hsa`, `jacobmedley`, `patiently`, `figma-default` |
-| Figma import | `npm run tokens:import-figma` → `tokens/themes/figma-default.json` |
-| Shadcn token mapping | Done via `globals.css @theme inline` |
-
----
-
-## Known Issues / Open Work
-
-### `default.json` color palette is limited
-
-`tokens/primitives.json` has a limited color palette (no `gray`, partial `red` scale, etc.).
-`tokens/themes/default.json` references were updated to use available shades (`red.500`
-instead of `red.600`, `slate` instead of `gray`). The primitives palette should be
-expanded for complete coverage.
-
-### Other theme files not yet converted to DTCG + hex
-
-`hsa.json`, `jacobmedley.json`, `patiently.json` — need to be reviewed and updated to
-DTCG format with hex values if they still use legacy flat format.
-
-### Figma import does not update primitives
-
-`import-figma.mjs` only imports the `theme` collection from Figma. The `color` and
-`radius` primitives in the Figma file are not yet synced back to `tokens/primitives.json`.
-This is intentional for now — primitives should be curated manually until Figma is the
-confirmed source of truth.
-
-### Continue Figma ↔ Code parity on demo
-
-The `figma-default` theme is live but not yet featured on the demo page. Next step:
-add a theme switcher entry for it and verify visual parity with the Figma design.
+| `apps/web` dev server | http://localhost:3000 |
+| `apps/docs` dev server | http://localhost:3001 |
+| Demo page (`/demo`) | All 35+ components, 4-theme switcher live |
+| Home page (`/`) | Foundational components: Button, Input, Accordion, Alert |
+| `@fmds/ui` components | 2 custom (Button, Input) + 30 shadcn + Alert, Card, Badge |
+| Token build | Working — DTCG format, hex→HSL, `{color.X}` refs resolved |
+| Token themes | `default`, `fsa`, `hsa`, `patiently` — all DTCG hex format |
+| Figma import (code → Figma) | `figma-tokens/fmds-tokens.json` — Tokens Studio ready |
+| Figma export (Figma → code) | `figma-tokens/Default.tokens.json` raw export, pipeline TBD |
+| Docs component coverage | Button, Card, Input (3 of 35+) |
 
 ---
 
 ## Architecture
 
 ```
-figma-tokens/Default.tokens.json   ← raw Figma export
-  → tokens/import-figma.mjs        ← import step (run manually or via tokens:sync)
-  → tokens/themes/figma-default.json
+figma-tokens/Default.tokens.json   ← raw Figma variable export (Figma → code, TBD)
 
-tokens/themes/*.json
+tokens/primitives.json             ← color palette, radius, typography, spacing (HSL)
+tokens/themes/*.json               ← semantic themes (DTCG, hex values)
   → tokens/build-css-vars.mjs      ← CSS var generation
   → apps/web/src/styles/fmds-tokens.css
   → apps/docs/src/styles/fmds-tokens.css
   → @theme inline in globals.css   ← Tailwind v4 color utilities
   → @fmds/ui components
-  → apps/web, apps/docs
+  → apps/web /demo, apps/docs
+
+tokens/generate-figma-import.mjs   ← generates Tokens Studio JSON from current tokens
+  → figma-tokens/fmds-tokens.json  ← import this into Figma via Tokens Studio plugin
 ```
 
-## To Pick Up
+---
 
-1. Add `figma-default` to the theme switcher on the demo page
-2. Verify visual parity: `figma-default` theme vs. Figma design
-3. Expand `tokens/primitives.json` color palette (add full `gray`, `red` scale, etc.)
-4. Convert remaining theme files to DTCG format (`hsa`, `jacobmedley`, `patiently`)
-5. Decide whether Figma primitives should also sync to `tokens/primitives.json`
+## Tokens Studio Import — How to Use
+
+1. Open Figma file
+2. Open Tokens Studio plugin
+3. Load `figma-tokens/fmds-tokens.json` (multi-file or single-file JSON import)
+4. Sets: `global` (primitives), `default`, `fsa`, `hsa`, `patiently`
+5. Apply a theme set to a page to test visual output
+
+Regenerate anytime: `node tokens/generate-figma-import.mjs`
+
+---
+
+## Open Work
+
+### High priority
+1. **Figma → code parity** — `figma-tokens/Default.tokens.json` is not yet wired into the build; `import-figma.mjs` and the `figma-default` theme need to be restored and added to the demo page theme switcher
+2. **Docs coverage** — only Button, Card, Input documented; 32+ components have no docs page
+
+### Lower priority
+3. **Expand `tokens/primitives.json`** — limited palette (no full gray scale, partial red, no neutral/zinc); blocks theme authors from referencing more primitives
+4. **Primitive sync from Figma** — `import-figma.mjs` only imports the `theme` collection; `color` and `radius` primitives in the Figma file are not synced to `primitives.json`
+5. **Theme portability test** — verify all 4 themes render correctly on the full `/demo` component set (especially HSA extended tokens: success, warning, info)
