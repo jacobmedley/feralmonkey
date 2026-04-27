@@ -1,0 +1,325 @@
+{
+  "version": "1.0",
+  "collections": [
+    {
+      "name": "Primitives",
+      "modes": ["Value"],
+      "variables": [
+        { "name": "color/white",             "type": "COLOR", "values": { "Value": { "r": 1.0,    "g": 1.0,    "b": 1.0,    "a": 1 } } },
+        { "name": "color/black",             "type": "COLOR", "values": { "Value": { "r": 0.0,    "g": 0.0,    "b": 0.0,    "a": 1 } } },
+        { "name": "color/slate/50",          "type": "COLOR", "values": { "Value": { "r": 0.972,  "g": 0.9804, "b": 0.988,  "a": 1 } } },
+        { "name": "color/slate/100",         "type": "COLOR", "values": { "Value": { "r": 0.944,  "g": 0.96,   "b": 0.976,  "a": 1 } } },
+        { "name": "color/slate/200",         "type": "COLOR", "values": { "Value": { "r": 0.8812, "g": 0.9062, "b": 0.9388, "a": 1 } } },
+        { "name": "color/slate/300",         "type": "COLOR", "values": { "Value": { "r": 0.7968, "g": 0.8357, "b": 0.8832, "a": 1 } } },
+        { "name": "color/slate/400",         "type": "COLOR", "values": { "Value": { "r": 0.58,   "g": 0.6383, "b": 0.72,   "a": 1 } } },
+        { "name": "color/slate/500",         "type": "COLOR", "values": { "Value": { "r": 0.3948, "g": 0.4575, "b": 0.5452, "a": 1 } } },
+        { "name": "color/slate/600",         "type": "COLOR", "values": { "Value": { "r": 0.2835, "g": 0.3389, "b": 0.4165, "a": 1 } } },
+        { "name": "color/slate/700",         "type": "COLOR", "values": { "Value": { "r": 0.2025, "g": 0.2588, "b": 0.3375, "a": 1 } } },
+        { "name": "color/slate/800",         "type": "COLOR", "values": { "Value": { "r": 0.1139, "g": 0.1569, "b": 0.2261, "a": 1 } } },
+        { "name": "color/slate/900",         "type": "COLOR", "values": { "Value": { "r": 0.0583, "g": 0.0893, "b": 0.1617, "a": 1 } } },
+        { "name": "color/slate/950",         "type": "COLOR", "values": { "Value": { "r": 0.008,  "g": 0.0332, "b": 0.092,  "a": 1 } } },
+        { "name": "color/blue/50",           "type": "COLOR", "values": { "Value": { "r": 0.96,   "g": 0.978,  "b": 1.0,    "a": 1 } } },
+        { "name": "color/blue/100",          "type": "COLOR", "values": { "Value": { "r": 0.92,   "g": 0.9533, "b": 1.0,    "a": 1 } } },
+        { "name": "color/blue/500",          "type": "COLOR", "values": { "Value": { "r": 0.1399, "g": 0.387,  "b": 0.9201, "a": 1 } } },
+        { "name": "color/blue/600",          "type": "COLOR", "values": { "Value": { "r": 0.14,   "g": 0.3393, "b": 0.66,   "a": 1 } } },
+        { "name": "color/blue/700",          "type": "COLOR", "values": { "Value": { "r": 0.216,  "g": 0.3312, "b": 0.504,  "a": 1 } } },
+        { "name": "color/blue/900",          "type": "COLOR", "values": { "Value": { "r": 0.0765, "g": 0.1482, "b": 0.2635, "a": 1 } } },
+        { "name": "color/green/600",         "type": "COLOR", "values": { "Value": { "r": 0.0864, "g": 0.6336, "b": 0.2871, "a": 1 } } },
+        { "name": "color/green/700",         "type": "COLOR", "values": { "Value": { "r": 0.0702, "g": 0.4698, "b": 0.31,   "a": 1 } } },
+        { "name": "color/amber/500",         "type": "COLOR", "values": { "Value": { "r": 0.96,   "g": 0.6227, "b": 0.04,   "a": 1 } } },
+        { "name": "color/red/500",           "type": "COLOR", "values": { "Value": { "r": 0.8032, "g": 0.2368, "b": 0.3784, "a": 1 } } },
+        { "name": "color/teal/800",          "type": "COLOR", "values": { "Value": { "r": 0.0,    "g": 0.28,   "b": 0.4,    "a": 1 } } },
+        { "name": "color/peach/50",          "type": "COLOR", "values": { "Value": { "r": 0.9965, "g": 0.9252, "b": 0.9035, "a": 1 } } },
+        { "name": "color/peach/100",         "type": "COLOR", "values": { "Value": { "r": 1.0,    "g": 0.7853, "b": 0.72,   "a": 1 } } },
+        { "name": "color/peach/200",         "type": "COLOR", "values": { "Value": { "r": 1.0,    "g": 0.6933, "b": 0.6,    "a": 1 } } },
+        { "name": "color/yellow/200",        "type": "COLOR", "values": { "Value": { "r": 1.0,    "g": 0.9176, "b": 0.62,   "a": 1 } } },
+        { "name": "color/indigo/25",         "type": "COLOR", "values": { "Value": { "r": 0.9788, "g": 0.9412, "b": 0.9788, "a": 1 } } },
+        { "name": "color/indigo/50",         "type": "COLOR", "values": { "Value": { "r": 0.9167, "g": 0.9,    "b": 1.0,    "a": 1 } } },
+        { "name": "color/indigo/100",        "type": "COLOR", "values": { "Value": { "r": 0.9116, "g": 0.8284, "b": 0.9005, "a": 1 } } },
+        { "name": "color/indigo/200",        "type": "COLOR", "values": { "Value": { "r": 0.7655, "g": 0.6725, "b": 0.8275, "a": 1 } } },
+        { "name": "color/indigo/400",        "type": "COLOR", "values": { "Value": { "r": 0.5545, "g": 0.5042, "b": 0.7558, "a": 1 } } },
+        { "name": "color/indigo/600",        "type": "COLOR", "values": { "Value": { "r": 0.337,  "g": 0.2684, "b": 0.6116, "a": 1 } } },
+        { "name": "color/mint/200",          "type": "COLOR", "values": { "Value": { "r": 0.728,  "g": 0.952,  "b": 0.9035, "a": 1 } } },
+        { "name": "color/mint/500",          "type": "COLOR", "values": { "Value": { "r": 0.3025, "g": 0.7975, "b": 0.6902, "a": 1 } } },
+        { "name": "color/mint/700",          "type": "COLOR", "values": { "Value": { "r": 0.1353, "g": 0.5247, "b": 0.4468, "a": 1 } } },
+        { "name": "color/cyan/400",          "type": "COLOR", "values": { "Value": { "r": 0.0832, "g": 0.7821, "b": 0.9568, "a": 1 } } },
+        { "name": "color/cyan/500",          "type": "COLOR", "values": { "Value": { "r": 0.0,    "g": 0.704,  "b": 0.88,   "a": 1 } } },
+        { "name": "color/cyan/900",          "type": "COLOR", "values": { "Value": { "r": 0.0,    "g": 0.195,  "b": 0.26,   "a": 1 } } },
+        { "name": "color/grey/50",           "type": "COLOR", "values": { "Value": { "r": 0.96,   "g": 0.96,   "b": 0.96,   "a": 1 } } },
+        { "name": "color/grey/200",          "type": "COLOR", "values": { "Value": { "r": 0.8,    "g": 0.8,    "b": 0.8,    "a": 1 } } },
+        { "name": "color/grey/600",          "type": "COLOR", "values": { "Value": { "r": 0.4,    "g": 0.4,    "b": 0.4,    "a": 1 } } },
+        { "name": "color/grey/950",          "type": "COLOR", "values": { "Value": { "r": 0.1064, "g": 0.1422, "b": 0.1736, "a": 1 } } },
+        { "name": "color/radical-red",       "type": "COLOR", "values": { "Value": { "r": 1.0,    "g": 0.16,   "b": 0.356,  "a": 1 } } },
+        { "name": "color/english-violet",    "type": "COLOR", "values": { "Value": { "r": 0.3917, "g": 0.2736, "b": 0.4464, "a": 1 } } },
+        { "name": "color/monarch",           "type": "COLOR", "values": { "Value": { "r": 0.8928, "g": 0.7002, "b": 0.0672, "a": 1 } } },
+        { "name": "color/faded-glory",       "type": "COLOR", "values": { "Value": { "r": 0.517,  "g": 0.5716, "b": 0.643,  "a": 1 } } },
+        { "name": "color/irish-stone",       "type": "COLOR", "values": { "Value": { "r": 0.37,   "g": 0.5734, "b": 0.3666, "a": 1 } } },
+        { "name": "color/red-falling",       "type": "COLOR", "values": { "Value": { "r": 0.5005, "g": 0.1995, "b": 0.1995, "a": 1 } } },
+        { "name": "color/silver-chalice",    "type": "COLOR", "values": { "Value": { "r": 0.672,  "g": 0.6799, "b": 0.6601, "a": 1 } } },
+        { "name": "color/charcoal",          "type": "COLOR", "values": { "Value": { "r": 0.2688, "g": 0.2611, "b": 0.2112, "a": 1 } } },
+        { "name": "spacing/1",              "type": "FLOAT",  "values": { "Value": 4  } },
+        { "name": "spacing/2",              "type": "FLOAT",  "values": { "Value": 8  } },
+        { "name": "spacing/3",              "type": "FLOAT",  "values": { "Value": 12 } },
+        { "name": "spacing/4",              "type": "FLOAT",  "values": { "Value": 16 } },
+        { "name": "spacing/6",              "type": "FLOAT",  "values": { "Value": 24 } },
+        { "name": "spacing/8",              "type": "FLOAT",  "values": { "Value": 32 } },
+        { "name": "radius/sm",              "type": "FLOAT",  "values": { "Value": 4  } },
+        { "name": "radius/md",              "type": "FLOAT",  "values": { "Value": 6  } },
+        { "name": "radius/lg",              "type": "FLOAT",  "values": { "Value": 8  } },
+        { "name": "radius/xl",              "type": "FLOAT",  "values": { "Value": 12 } },
+        { "name": "fontSize/xs",            "type": "FLOAT",  "values": { "Value": 12 } },
+        { "name": "fontSize/sm",            "type": "FLOAT",  "values": { "Value": 14 } },
+        { "name": "fontSize/base",          "type": "FLOAT",  "values": { "Value": 16 } },
+        { "name": "fontSize/lg",            "type": "FLOAT",  "values": { "Value": 18 } },
+        { "name": "fontSize/xl",            "type": "FLOAT",  "values": { "Value": 20 } },
+        { "name": "fontSize/2xl",           "type": "FLOAT",  "values": { "Value": 24 } },
+        { "name": "fontSize/3xl",           "type": "FLOAT",  "values": { "Value": 30 } },
+        { "name": "fontSize/4xl",           "type": "FLOAT",  "values": { "Value": 36 } },
+        { "name": "fontSize/5xl",           "type": "FLOAT",  "values": { "Value": 48 } },
+        { "name": "fontFamily/sans",                  "type": "STRING", "values": { "Value": "ui-sans-serif, system-ui, sans-serif" } },
+        { "name": "fontFamily/serif",                 "type": "STRING", "values": { "Value": "ui-serif, Georgia, serif" } },
+        { "name": "fontFamily/mono",                  "type": "STRING", "values": { "Value": "ui-monospace, monospace" } },
+        { "name": "font/family/wt-volkolak",          "type": "STRING", "values": { "Value": "'WT Volkolak Grotesque', sans-serif" } },
+        { "name": "font/family/wt-volkolak-serif",    "type": "STRING", "values": { "Value": "'WT Volkolak Serif Text', serif" } },
+        { "name": "font/family/wt-volkolak-sans",     "type": "STRING", "values": { "Value": "'WT Volkolak Sans Display', sans-serif" } },
+        { "name": "font/family/lato",                 "type": "STRING", "values": { "Value": "'Lato', sans-serif" } }
+      ]
+    },
+    {
+      "name": "Semantics",
+      "modes": ["Default", "jacobmedley"],
+      "variables": [
+        {
+          "name": "background",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/white" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/950" }
+          }
+        },
+        {
+          "name": "foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/950" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/50" }
+          }
+        },
+        {
+          "name": "card",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/white" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/900" }
+          }
+        },
+        {
+          "name": "card/foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/950" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/50" }
+          }
+        },
+        {
+          "name": "popover",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/white" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/900" }
+          }
+        },
+        {
+          "name": "popover/foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/950" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/50" }
+          }
+        },
+        {
+          "name": "primary",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/900" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/amber/500" }
+          }
+        },
+        {
+          "name": "primary/foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/white" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/950" }
+          }
+        },
+        {
+          "name": "secondary",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/100" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/700" }
+          }
+        },
+        {
+          "name": "secondary/foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/900" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/200" }
+          }
+        },
+        {
+          "name": "muted",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/100" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/800" }
+          }
+        },
+        {
+          "name": "muted/foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/500" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/400" }
+          }
+        },
+        {
+          "name": "accent",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/100" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/cyan/400" }
+          }
+        },
+        {
+          "name": "accent/foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/900" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/950" }
+          }
+        },
+        {
+          "name": "destructive",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/red/500" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/red/500" }
+          }
+        },
+        {
+          "name": "destructive/foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/white" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/white" }
+          }
+        },
+        {
+          "name": "border",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/200" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/700" }
+          }
+        },
+        {
+          "name": "input",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/200" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/700" }
+          }
+        },
+        {
+          "name": "ring",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/blue/500" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/amber/500" }
+          }
+        },
+        {
+          "name": "success",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/green/600" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/green/600" }
+          }
+        },
+        {
+          "name": "success/foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/white" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/white" }
+          }
+        },
+        {
+          "name": "warning",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/amber/500" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/amber/500" }
+          }
+        },
+        {
+          "name": "warning/foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/900" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/950" }
+          }
+        },
+        {
+          "name": "info",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/blue/500" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/cyan/400" }
+          }
+        },
+        {
+          "name": "info/foreground",
+          "type": "COLOR",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/color/white" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/color/slate/950" }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Typography",
+      "modes": ["Default", "jacobmedley"],
+      "variables": [
+        {
+          "name": "font-family/base",
+          "type": "STRING",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/fontFamily/sans" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/fontFamily/sans" }
+          }
+        },
+        {
+          "name": "font-family/heading",
+          "type": "STRING",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/fontFamily/sans" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/fontFamily/sans" }
+          }
+        },
+        {
+          "name": "font-family/mono",
+          "type": "STRING",
+          "values": {
+            "Default":     { "type": "VARIABLE_ALIAS", "name": "Primitives/fontFamily/mono" },
+            "jacobmedley": { "type": "VARIABLE_ALIAS", "name": "Primitives/fontFamily/mono" }
+          }
+        }
+      ]
+    }
+  ]
+}
