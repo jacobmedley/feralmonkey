@@ -1,6 +1,6 @@
 # FMDS Handoff — figma-to-code-demo branch
 
-**Date:** 2026-04-26  
+**Date:** 2026-04-25  
 **Branch:** `figma-to-code-demo`  
 **Repo:** jacobmedley/feralmonkey
 
@@ -8,41 +8,57 @@
 
 ## What Was Done This Session
 
-### 1. Shadcn component library scaffolded into `@fmds/ui`
+### 1. Fixed stale node_modules git artifacts
 
-Twenty-plus shadcn/ui components were added to `packages/ui/src/components/`:
+`node_modules/@fmds/ui` and `node_modules/web` were accidentally tracked as real
+directories (not symlinks), which caused `@fmds/ui` components to fail to resolve
+at dev-server startup. Removed all tracked node_modules entries and ran `npm install`
+to restore the proper workspace symlinks.
 
-`alert-dialog`, `aspect-ratio`, `avatar`, `breadcrumb`, `button`, `checkbox`,
-`collapsible`, `command`, `context-menu`, `dialog`, `dropdown-menu`, `hover-card`,
-`label`, `navigation-menu`, `pagination`, `popover`, `progress`, `radio-group`,
-`scroll-area`, `select`, `separator`, `sheet`, `skeleton`, `slider`, `sonner`,
-`switch`, `table`, `tabs`, `textarea`, `tooltip`
+### 2. Fixed button.tsx export collision
 
-All are exported from `packages/ui/src/index.ts`. The index distinguishes two tiers:
+Two `Button` components existed:
+- `packages/ui/src/controls/button.tsx` — FMDS custom, token-driven (kept)
+- `packages/ui/src/components/button.tsx` — shadcn scaffold (removed)
 
-- `controls/` — custom FMDS implementations (Button, Input) — these own the token contract
-- `components/` — shadcn-based primitives — use Radix UI + Tailwind, not yet token-mapped
+`buttonVariants` is now exported from `controls/button.tsx`. `pagination.tsx` and
+`alert-dialog.tsx` were updated to import from `../controls/button`.
 
-### 2. Patiently theme added
+### 3. Confirmed token mapping for shadcn components (Option A)
 
-`tokens/themes/patiently.json` added. Theme list is now:
-`default`, `fsa`, `hsa`, `jacobmedley`, `patiently`
+Shadcn components use CSS variable names like `bg-popover`, `text-muted-foreground`,
+etc. The `globals.css` `@theme inline` block already maps all FMDS token vars to
+Tailwind v4 color utilities. No additional work needed — shadcn components render
+correctly with FMDS themes.
 
-`tokens/themes/default.json` and `fsa.json` were also updated.
+### 4. Updated token build to handle DTCG format
 
-### 3. Web app updated
+Theme files (`tokens/themes/*.json`) were updated to W3C DTCG format:
+```json
+{ "theme": { "background": { "$type": "color", "$value": "#FFFFFF" } } }
+```
 
-- `apps/web/src/app/layout.tsx` — layout changes
-- `apps/web/src/app/globals.css` — global style updates
-- `apps/web/src/styles/fmds-tokens.css` — token CSS expanded (~140 lines added)
-- `apps/web/src/components/ThemeToggle.tsx` — theme toggle updated
-- `figma-tokens/Default.tokens.json` — Figma token export added (7000+ lines, raw from Figma)
+`tokens/build-css-vars.mjs` was updated to:
+- Unwrap the top-level `"theme"` wrapper
+- Extract `$value` from DTCG token objects
+- Convert hex colors to HSL (`"H S% L%"`) for Tailwind compatibility
+- Append `px` units to numeric radius tokens
+- Resolve `{color.X}` and `{radius.X}` references directly from primitives
+- Remove duplicate `--radius` emission from the primitives block
 
-### 4. `command.tsx` runtime bug fixed
+### 5. Wired Figma tokens into build pipeline
 
-`cmdk` v1 changed from a nested API (`Command.Input`, `Command.List`, etc.) to flat named exports
-(`CommandInput`, `CommandList`, etc.). The generated shadcn component used the old API and crashed
-at module load. Fixed by importing flat exports from cmdk and aliasing to avoid name collisions.
+`tokens/import-figma.mjs` — new script that:
+- Reads `figma-tokens/Default.tokens.json` (raw Figma variable export)
+- Resolves internal `{color.X.Y}` references within the Figma file
+- Converts sRGB component values to hex
+- Writes `tokens/themes/figma-default.json` in DTCG format
+
+Two new npm scripts in root `package.json`:
+- `npm run tokens:import-figma` — run the Figma import step
+- `npm run tokens:sync` — import from Figma then build CSS vars
+
+The `figma-default` theme is now live and available as `data-theme="figma-default"`.
 
 ---
 
@@ -50,92 +66,63 @@ at module load. Fixed by importing flat exports from cmdk and aliasing to avoid 
 
 | Area | Status |
 |------|--------|
-| Dev server | Running — `http://localhost:3000` via `npm run dev --workspace=apps/web` |
-| `@fmds/ui` components | All shadcn components scaffolded, exports wired |
-| Token themes | 5 themes present, build pipeline intact |
-| `command.tsx` | Fixed — cmdk v1 compatible |
-| Figma tokens file | Present at `figma-tokens/Default.tokens.json`, not yet wired to build |
-| `packages/ui/tsconfig.json` | Added this session |
-| `packages/ui/components.json` | Added (shadcn config scaffold) |
+| Dev server | `npm run dev --workspace=apps/web` → http://localhost:3000 |
+| `@fmds/ui` components | All shadcn components wired, button collision resolved |
+| Token build | Working — DTCG format, hex→HSL conversion, `{color.X}` refs |
+| Token themes | `default`, `fsa`, `hsa`, `jacobmedley`, `patiently`, `figma-default` |
+| Figma import | `npm run tokens:import-figma` → `tokens/themes/figma-default.json` |
+| Shadcn token mapping | Done via `globals.css @theme inline` |
 
 ---
 
 ## Known Issues / Open Work
 
-### `node_modules/` files tracked in git
+### `default.json` color palette is limited
 
-Several `node_modules/` paths are tracked as modified but were intentionally excluded from the
-last commit. They will show as dirty in `git status`:
+`tokens/primitives.json` has a limited color palette (no `gray`, partial `red` scale, etc.).
+`tokens/themes/default.json` references were updated to use available shades (`red.500`
+instead of `red.600`, `slate` instead of `gray`). The primitives palette should be
+expanded for complete coverage.
 
-```
-node_modules/.package-lock.json
-node_modules/@fmds/ui/package.json
-node_modules/@fmds/ui/src/index.ts
-node_modules/web/src/app/globals.css
-node_modules/web/src/app/layout.tsx
-node_modules/web/src/styles/fmds-tokens.css
-```
+### Other theme files not yet converted to DTCG + hex
 
-These are workspace symlink artifacts. They need to be untracked:
+`hsa.json`, `jacobmedley.json`, `patiently.json` — need to be reviewed and updated to
+DTCG format with hex values if they still use legacy flat format.
 
-```bash
-git rm --cached node_modules/.package-lock.json
-git rm --cached -r node_modules/@fmds/ui
-git rm --cached -r node_modules/web
-git commit -m "chore: untrack node_modules artifacts"
-```
+### Figma import does not update primitives
 
-### Shadcn components not yet token-mapped
+`import-figma.mjs` only imports the `theme` collection from Figma. The `color` and
+`radius` primitives in the Figma file are not yet synced back to `tokens/primitives.json`.
+This is intentional for now — primitives should be curated manually until Figma is the
+confirmed source of truth.
 
-Components in `packages/ui/src/components/` use raw Tailwind classes (`bg-popover`,
-`text-muted-foreground`, etc.) via shadcn's CSS variable convention. These CSS variables are
-**not** currently emitted by the FMDS token build. Two paths forward:
+### Continue Figma ↔ Code parity on demo
 
-- **Option A:** Map shadcn's expected variable names (`--popover`, `--muted-foreground`, etc.)
-  into the token build output so shadcn components just work.
-- **Option B:** Replace shadcn Tailwind classes with FMDS semantic token classes component
-  by component — more work but keeps strict token parity.
-
-Option A is faster; Option B is architecturally correct for FMDS goals.
-
-### `figma-tokens/Default.tokens.json` not wired to build
-
-The Figma token export is present but nothing reads it yet. The existing build reads
-`tokens/themes/*.json`. Decide whether to reconcile these two token sources or treat
-`figma-tokens/` as a raw import step that feeds into `tokens/`.
-
-### `button.tsx` exists in both tiers
-
-- `packages/ui/src/controls/button.tsx` — FMDS custom, token-driven
-- `packages/ui/src/components/button.tsx` — shadcn scaffold, added this session
-
-Both are exported from `index.ts`. This will cause an export name collision. The shadcn
-`button.tsx` should either be removed (use the controls version) or reconciled.
+The `figma-default` theme is live but not yet featured on the demo page. Next step:
+add a theme switcher entry for it and verify visual parity with the Figma design.
 
 ---
 
-## Architecture Reminder
+## Architecture
 
 ```
+figma-tokens/Default.tokens.json   ← raw Figma export
+  → tokens/import-figma.mjs        ← import step (run manually or via tokens:sync)
+  → tokens/themes/figma-default.json
+
 tokens/themes/*.json
-  → tokens/build-css-vars.mjs
-  → CSS custom properties
-  → Tailwind v4 theme
+  → tokens/build-css-vars.mjs      ← CSS var generation
+  → apps/web/src/styles/fmds-tokens.css
+  → apps/docs/src/styles/fmds-tokens.css
+  → @theme inline in globals.css   ← Tailwind v4 color utilities
   → @fmds/ui components
   → apps/web, apps/docs
 ```
 
-CLAUDE.md rules that matter here:
-- components must use semantic tokens — no hardcoded values
-- themes = value overrides only
-- do not restructure `packages/` or add monorepo packages without approval
-
----
-
 ## To Pick Up
 
-1. Fix the `button.tsx` export collision (remove or reconcile shadcn version)
-2. Decide on token mapping strategy for shadcn components (Option A vs B above)
-3. Untrack the stale `node_modules/` git entries
-4. Wire `figma-tokens/Default.tokens.json` into the build pipeline or document its purpose
-5. Continue expanding Figma ↔ Code parity on the demo branch
+1. Add `figma-default` to the theme switcher on the demo page
+2. Verify visual parity: `figma-default` theme vs. Figma design
+3. Expand `tokens/primitives.json` color palette (add full `gray`, `red` scale, etc.)
+4. Convert remaining theme files to DTCG format (`hsa`, `jacobmedley`, `patiently`)
+5. Decide whether Figma primitives should also sync to `tokens/primitives.json`
