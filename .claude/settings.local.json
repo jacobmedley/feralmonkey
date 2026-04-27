@@ -2,7 +2,32 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:api.github.com)"
+      "WebFetch(domain:api.github.com)",
+      "Bash(node tokens/build-css-vars.mjs)",
+      "Bash(npm run *)",
+      "Bash(npm run:*)",
+      "Bash(node_modules/next/dist/bin/next build:*)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(d.get\\('packageManager','not set'\\)\\)\")",
+      "Bash(npx shadcn@latest add --cwd packages/ui --overwrite separator skeleton scroll-area aspect-ratio label checkbox radio-group switch textarea select slider dialog sheet popover tooltip dropdown-menu context-menu navigation-menu tabs breadcrumb pagination command table avatar progress hover-card collapsible sonner alert-dialog)",
+      "Bash(node -e \"const cmdk = require\\('./node_modules/cmdk'\\); console.log\\(Object.keys\\(cmdk\\)\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git restore *)",
+      "Bash(git push *)",
+      "Bash(git checkout *)",
+      "Bash(git fetch *)",
+      "Bash(git pull *)",
+      "Bash(xargs kill *)",
+      "Bash(git stash *)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(kill -9 89365)",
+      "Bash(git rm *)",
+      "Bash(npm install *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "Bash(curl -s http://localhost:3000/demo -o /dev/null -w \"%{http_code}\")",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('tokens/primitives.json'\\)\\); print\\(list\\(d.keys\\(\\)\\)\\)\")",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\('tokens/primitives.json'\\)\\); print\\(list\\(d['color']['red'].keys\\(\\)\\) if 'red' in d['color'] else 'no red'\\)\")"
     ]
   }
 }

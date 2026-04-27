@@ -1,42 +1,53 @@
 {
-  "background": "{primitives.color.white}",
-  "foreground": "{primitives.color.blue.900}",
-
-  "card": "{primitives.color.white}",
-  "card-foreground": "{primitives.color.blue.900}",
-
-  "popover": "{primitives.color.white}",
-  "popover-foreground": "{primitives.color.blue.900}",
-
-  "primary": "{primitives.color.indigo.600}",
-  "primary-foreground": "{primitives.color.white}",
-
-  "secondary": "{primitives.color.blue.900}",
-  "secondary-foreground": "{primitives.color.white}",
-
-  "muted": "{primitives.color.indigo.25}",
-  "muted-foreground": "{primitives.color.grey.600}",
-
-  "accent": "{primitives.color.mint.700}",
-  "accent-foreground": "{primitives.color.white}",
-
-  "destructive": "{primitives.color.red.500}",
-  "destructive-foreground": "{primitives.color.white}",
-
-  "border": "{primitives.color.grey.200}",
-  "input": "{primitives.color.grey.200}",
-  "ring": "{primitives.color.indigo.600}",
-
-  "font-family-base": "{primitives.font.family.wt-volkolak}",
-  "font-family-heading": "{primitives.font.family.wt-volkolak-serif}",
-  "font-family-mono": "{primitives.font.family.lato}",
-
-  "success": "{primitives.color.green.700}",
-  "success-foreground": "{primitives.color.white}",
-
-  "warning": "{primitives.color.yellow.200}",
-  "warning-foreground": "{primitives.color.blue.900}",
-
-  "info": "{primitives.color.indigo.400}",
-  "info-foreground": "{primitives.color.white}"
+  "theme": {
+    "brand": {
+      "navy":   { "$type": "color", "$value": "#142643" },
+      "violet": { "$type": "color", "$value": "#56449C" },
+      "teal":   { "$type": "color", "$value": "#238672" },
+      "lilac":  { "$type": "color", "$value": "#FAF0FA" },
+      "gray":   { "$type": "color", "$value": "#666666" },
+      "silver": { "$type": "color", "$value": "#CCCCCC" }
+    },
+    "background":             { "$type": "color",  "$value": "{color.white}" },
+    "foreground":             { "$type": "color",  "$value": "{theme.brand.navy}" },
+    "muted":                  { "$type": "color",  "$value": "{theme.brand.lilac}" },
+    "muted-foreground":       { "$type": "color",  "$value": "{theme.brand.gray}" },
+    "card":                   { "$type": "color",  "$value": "{color.white}" },
+    "card-foreground":        { "$type": "color",  "$value": "{theme.brand.navy}" },
+    "popover":                { "$type": "color",  "$value": "{color.white}" },
+    "popover-foreground":     { "$type": "color",  "$value": "{theme.brand.navy}" },
+    "border":                 { "$type": "color",  "$value": "{theme.brand.silver}" },
+    "input":                  { "$type": "color",  "$value": "{theme.brand.silver}" },
+    "primary":                { "$type": "color",  "$value": "{theme.brand.violet}" },
+    "primary-foreground":     { "$type": "color",  "$value": "{color.white}" },
+    "secondary":              { "$type": "color",  "$value": "{theme.brand.navy}" },
+    "secondary-foreground":   { "$type": "color",  "$value": "{color.white}" },
+    "accent":                 { "$type": "color",  "$value": "{theme.brand.teal}" },
+    "accent-foreground":      { "$type": "color",  "$value": "{color.white}" },
+    "destructive":            { "$type": "color",  "$value": "{color.rose.500}" },
+    "destructive-foreground": { "$type": "color",  "$value": "{color.white}" },
+    "ring":                   { "$type": "color",  "$value": "{theme.brand.violet}" },
+    "radius":                 { "$type": "number", "$value": 6 },
+    "font-family-base":       { "$type": "string", "$value": "'WT Volkolak Grotesque', sans-serif" },
+    "font-family-heading":    { "$type": "string", "$value": "'WT Volkolak Serif Text', serif" },
+    "success":                { "$type": "color",  "$value": "#12784F" },
+    "success-foreground":     { "$type": "color",  "$value": "{color.white}" },
+    "warning":                { "$type": "color",  "$value": "#FFEA9E" },
+    "warning-foreground":     { "$type": "color",  "$value": "{theme.brand.navy}" },
+    "info":                   { "$type": "color",  "$value": "#8D81C1" },
+    "info-foreground":        { "$type": "color",  "$value": "{color.white}" },
+    "chart-1":                { "$type": "color",  "$value": "{color.chart.1}" },
+    "chart-2":                { "$type": "color",  "$value": "{color.chart.2}" },
+    "chart-3":                { "$type": "color",  "$value": "{color.chart.3}" },
+    "chart-4":                { "$type": "color",  "$value": "{color.chart.4}" },
+    "chart-5":                { "$type": "color",  "$value": "{color.chart.5}" },
+    "sidebar-background":     { "$type": "color",  "$value": "{color.white}" },
+    "sidebar-foreground":     { "$type": "color",  "$value": "{theme.brand.navy}" },
+    "sidebar-primary":        { "$type": "color",  "$value": "{theme.brand.violet}" },
+    "sidebar-primary-foreground": { "$type": "color", "$value": "{color.white}" },
+    "sidebar-accent":         { "$type": "color",  "$value": "{theme.brand.teal}" },
+    "sidebar-accent-foreground": { "$type": "color", "$value": "{color.white}" },
+    "sidebar-border":         { "$type": "color",  "$value": "{theme.brand.silver}" },
+    "sidebar-ring":           { "$type": "color",  "$value": "{theme.brand.violet}" }
+  }
 }

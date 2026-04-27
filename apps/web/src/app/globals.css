@@ -21,9 +21,12 @@ html {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-body {
-  background: hsl(var(--background));
-  color: hsl(var(--foreground));
+@layer base {
+  body {
+    font-family: var(--font-sans, var(--font-inter, system-ui, sans-serif));
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
 }
 
 @keyframes accordion-down {
@@ -74,6 +77,31 @@ body {
   --color-info: hsl(var(--info));
   --color-info-foreground: hsl(var(--info-foreground));
 
+  --color-status-info: hsl(var(--status-info-bg));
+  --color-status-info-fg: hsl(var(--status-info-fg));
+  --color-status-info-border: hsl(var(--status-info-border));
+  --color-status-info-solid: hsl(var(--status-info-solid-bg));
+  --color-status-info-solid-fg: hsl(var(--status-info-solid-fg));
+
+  --color-status-success: hsl(var(--status-success-bg));
+  --color-status-success-fg: hsl(var(--status-success-fg));
+  --color-status-success-border: hsl(var(--status-success-border));
+  --color-status-success-solid: hsl(var(--status-success-solid-bg));
+  --color-status-success-solid-fg: hsl(var(--status-success-solid-fg));
+
+  --color-status-warning: hsl(var(--status-warning-bg));
+  --color-status-warning-fg: hsl(var(--status-warning-fg));
+  --color-status-warning-border: hsl(var(--status-warning-border));
+  --color-status-warning-solid: hsl(var(--status-warning-solid-bg));
+  --color-status-warning-solid-fg: hsl(var(--status-warning-solid-fg));
+
+  --color-status-error: hsl(var(--status-error-bg));
+  --color-status-error-fg: hsl(var(--status-error-fg));
+  --color-status-error-border: hsl(var(--status-error-border));
+  --color-status-error-solid: hsl(var(--status-error-solid-bg));
+  --color-status-error-solid-fg: hsl(var(--status-error-solid-fg));
+
+  --radius-DEFAULT: var(--radius);
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);

@@ -1,0 +1,136 @@
+{
+  "theme": {
+    "radius": {
+      "$type": "number",
+      "$value": 8
+    },
+    "background": {
+      "$type": "color",
+      "$value": "{color.white}"
+    },
+    "foreground": {
+      "$type": "color",
+      "$value": "{color.slate.950}"
+    },
+    "muted": {
+      "$type": "color",
+      "$value": "{color.slate.100}"
+    },
+    "muted-foreground": {
+      "$type": "color",
+      "$value": "{color.slate.500}"
+    },
+    "card": {
+      "$type": "color",
+      "$value": "{color.white}"
+    },
+    "card-foreground": {
+      "$type": "color",
+      "$value": "{color.slate.950}"
+    },
+    "popover": {
+      "$type": "color",
+      "$value": "{color.white}"
+    },
+    "popover-foreground": {
+      "$type": "color",
+      "$value": "{color.slate.950}"
+    },
+    "border": {
+      "$type": "color",
+      "$value": "{color.slate.200}"
+    },
+    "input": {
+      "$type": "color",
+      "$value": "{color.slate.200}"
+    },
+    "primary": {
+      "$type": "color",
+      "$value": "{color.blue.600}"
+    },
+    "primary-foreground": {
+      "$type": "color",
+      "$value": "{color.slate.50}"
+    },
+    "secondary": {
+      "$type": "color",
+      "$value": "{color.slate.100}"
+    },
+    "secondary-foreground": {
+      "$type": "color",
+      "$value": "{color.slate.900}"
+    },
+    "accent": {
+      "$type": "color",
+      "$value": "{color.slate.100}"
+    },
+    "accent-foreground": {
+      "$type": "color",
+      "$value": "{color.slate.900}"
+    },
+    "destructive": {
+      "$type": "color",
+      "$value": "{color.red.600}"
+    },
+    "destructive-foreground": {
+      "$type": "color",
+      "$value": "{color.slate.50}"
+    },
+    "ring": {
+      "$type": "color",
+      "$value": "{color.slate.950}"
+    },
+    "chart-1": {
+      "$type": "color",
+      "$value": "{color.chart.1}"
+    },
+    "chart-2": {
+      "$type": "color",
+      "$value": "{color.chart.2}"
+    },
+    "chart-3": {
+      "$type": "color",
+      "$value": "{color.chart.3}"
+    },
+    "chart-4": {
+      "$type": "color",
+      "$value": "{color.chart.4}"
+    },
+    "chart-5": {
+      "$type": "color",
+      "$value": "{color.chart.5}"
+    },
+    "sidebar-background": {
+      "$type": "color",
+      "$value": "{color.slate.50}"
+    },
+    "sidebar-foreground": {
+      "$type": "color",
+      "$value": "{color.slate.700}"
+    },
+    "sidebar-primary": {
+      "$type": "color",
+      "$value": "{color.slate.900}"
+    },
+    "sidebar-primary-foreground": {
+      "$type": "color",
+      "$value": "{color.slate.50}"
+    },
+    "sidebar-accent": {
+      "$type": "color",
+      "$value": "{color.slate.100}"
+    },
+    "sidebar-accent-foreground": {
+      "$type": "color",
+      "$value": "{color.slate.900}"
+    },
+    "sidebar-border": {
+      "$type": "color",
+      "$value": "{theme.border}"
+    },
+    "sidebar-ring": {
+      "$type": "color",
+      "$value": "{theme.primary}"
+    }
+  }
+}

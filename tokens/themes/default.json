@@ -1,42 +1,31 @@
 {
-  "background": "{primitives.color.white}",
-  "foreground": "{primitives.color.slate.950}",
-
-  "card": "{primitives.color.white}",
-  "card-foreground": "{primitives.color.slate.950}",
-
-  "popover": "{primitives.color.white}",
-  "popover-foreground": "{primitives.color.slate.950}",
-
-  "primary": "{primitives.color.slate.900}",
-  "primary-foreground": "{primitives.color.white}",
-
-  "secondary": "{primitives.color.slate.100}",
-  "secondary-foreground": "{primitives.color.slate.900}",
-
-  "muted": "{primitives.color.slate.100}",
-  "muted-foreground": "{primitives.color.slate.500}",
-
-  "accent": "{primitives.color.slate.100}",
-  "accent-foreground": "{primitives.color.slate.900}",
-
-  "destructive": "{primitives.color.red.500}",
-  "destructive-foreground": "{primitives.color.white}",
-
-  "border": "{primitives.color.slate.200}",
-  "input": "{primitives.color.slate.200}",
-  "ring": "{primitives.color.blue.500}",
-
-  "font-family-base": "{primitives.fontFamily.sans}",
-  "font-family-heading": "{primitives.fontFamily.sans}",
-  "font-family-mono": "{primitives.fontFamily.mono}",
-
-  "success": "{primitives.color.green.600}",
-  "success-foreground": "{primitives.color.white}",
-
-  "warning": "{primitives.color.amber.500}",
-  "warning-foreground": "{primitives.color.slate.900}",
-
-  "info": "{primitives.color.blue.500}",
-  "info-foreground": "{primitives.color.white}"
+  "theme": {
+    "background": { "$type": "color", "$value": "{color.white}" },
+    "foreground": { "$type": "color", "$value": "{color.slate.900}" },
+    "muted": { "$type": "color", "$value": "{color.slate.100}" },
+    "muted-foreground": { "$type": "color", "$value": "{color.slate.500}" },
+    "card": { "$type": "color", "$value": "{color.white}" },
+    "card-foreground": { "$type": "color", "$value": "{color.slate.900}" },
+    "popover": { "$type": "color", "$value": "{color.white}" },
+    "popover-foreground": { "$type": "color", "$value": "{color.slate.900}" },
+    "primary": { "$type": "color", "$value": "{color.slate.700}" },
+    "primary-foreground": { "$type": "color", "$value": "{color.white}" },
+    "secondary": { "$type": "color", "$value": "{color.slate.200}" },
+    "secondary-foreground": { "$type": "color", "$value": "{color.slate.900}" },
+    "accent": { "$type": "color", "$value": "{color.slate.100}" },
+    "accent-foreground": { "$type": "color", "$value": "{color.slate.900}" },
+    "destructive": { "$type": "color", "$value": "{color.red.500}" },
+    "destructive-foreground": { "$type": "color", "$value": "{color.white}" },
+    "border": { "$type": "color", "$value": "{color.slate.300}" },
+    "input": { "$type": "color", "$value": "{color.slate.300}" },
+    "ring": { "$type": "color", "$value": "{color.slate.400}" },
+    "radius": { "$type": "number", "$value": 4 },
+    "font-sans": { "$type": "string", "$value": "Inter" },
+    "font-display": { "$type": "string", "$value": "Inter" },
+    "chart-1": { "$type": "color", "$value": "{color.chart.1}" },
+    "chart-2": { "$type": "color", "$value": "{color.chart.2}" },
+    "chart-3": { "$type": "color", "$value": "{color.chart.3}" },
+    "chart-4": { "$type": "color", "$value": "{color.chart.4}" },
+    "chart-5": { "$type": "color", "$value": "{color.chart.5}" }
+  }
 }

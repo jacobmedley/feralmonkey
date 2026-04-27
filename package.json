@@ -8,6 +8,9 @@
   "scripts": {
     "tokens:build": "node tokens/build-css-vars.mjs",
     "tokens:watch": "node --watch tokens/build-css-vars.mjs",
+    "tokens:import-figma": "node tokens/import-figma.mjs",
+    "tokens:export-figma": "node tokens/generate-figma-themes.mjs",
+    "tokens:sync": "npm run tokens:import-figma && npm run tokens:build",
     "prebuild": "npm run tokens:build"
   },
   "devDependencies": {
