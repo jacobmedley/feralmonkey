@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Playfair_Display, DM_Sans, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ThemeToggle } from "../components/ThemeToggle";
 
@@ -11,6 +11,26 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-base-default",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-base-theme1",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-base-theme2",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-base-theme3",
 });
 
 export const metadata: Metadata = {
@@ -26,11 +46,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${playfair.variable} ${dmSans.variable} ${spaceGrotesk.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('fmds-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('fmds-theme');if(t&&['theme1','theme2','theme3'].includes(t))document.documentElement.setAttribute('data-theme',t);else if(t)localStorage.removeItem('fmds-theme');})();` }} />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeToggle />
