@@ -35,10 +35,15 @@ function unwrapDtcg(raw) {
   return raw;
 }
 
-// Convert a resolved value to a CSS-ready string
+// Convert a resolved value to a CSS-ready string.
+// Handles: hex strings, HSL strings, Figma color objects { hex, components, ... }, numbers.
 function toCssValue(value, key = "") {
   if (typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value)) {
     return hexToHsl(value);
+  }
+  // Figma color object: { hex, colorSpace, components, alpha }
+  if (value && typeof value === "object" && value.hex) {
+    return hexToHsl(value.hex);
   }
   // Radius number tokens are always px
   if (typeof value === "number" && key === "radius") return `${value}px`;
@@ -46,15 +51,19 @@ function toCssValue(value, key = "") {
   return value;
 }
 
+// Check if a value is a nested namespace group (not a DTCG token)
+function isNestedGroup(raw) {
+  if (!raw || typeof raw !== "object") return false;
+  return !("$value" in raw) && !("$type" in raw);
+}
+
 const primitives = readJson(path.join(root, "tokens/primitives.json"));
 const semantics = readJson(path.join(root, "tokens/semantics.json"));
-const defaultTheme = readJson(path.join(root, "tokens/themes/default.json"));
 
+// Base sources — theme is set per-file below
 const sources = {
   primitives,
   semantics,
-  theme: defaultTheme,
-  // Convenience aliases so tokens can reference {color.X} or {radius.X} directly
   color: primitives.color,
   radius: primitives.radius,
 };
@@ -109,8 +118,16 @@ for (const file of themeFiles) {
   // Support both DTCG-wrapped ({ theme: { ... } }) and flat ({ key: value }) formats
   const tokenMap = loaded.theme ?? loaded;
 
+  // Make the current theme's full token map available for self-referential aliases
+  // (e.g. {theme.brand.navy} resolves from this theme, not the default theme)
+  sources.theme = tokenMap;
+
   const themeResolved = {};
   for (const [key, raw] of Object.entries(tokenMap)) {
+    // Skip nested namespace groups (e.g. the brand palette) — they're for
+    // resolution only and don't emit CSS vars directly.
+    if (isNestedGroup(raw)) continue;
+
     const value = unwrapDtcg(raw);
     let resolved;
 

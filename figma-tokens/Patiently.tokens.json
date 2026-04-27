@@ -162,17 +162,6 @@
         }
       }
     },
-    "radius": {
-      "$type": "number",
-      "$value": 12,
-      "$extensions": {
-        "com.figma.variableId": "VariableID:2984:3698",
-        "com.figma.scopes": [
-          "CORNER_RADIUS"
-        ],
-        "com.figma.isOverride": true
-      }
-    },
     "background": {
       "$type": "color",
       "$value": "{theme.brand.cream}",
@@ -521,6 +510,17 @@
         "com.figma.variableId": "VariableID:2984:3711",
         "com.figma.scopes": [
           "ALL_SCOPES"
+        ],
+        "com.figma.isOverride": true
+      }
+    },
+    "radius": {
+      "$type": "number",
+      "$value": 12,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:2984:3698",
+        "com.figma.scopes": [
+          "CORNER_RADIUS"
         ],
         "com.figma.isOverride": true
       }

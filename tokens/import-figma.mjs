@@ -72,16 +72,27 @@ const themeTokens = figma.theme ?? {};
 const output = { theme: {} };
 
 for (const [key, token] of Object.entries(themeTokens)) {
+  // Skip nested groups (e.g. brand palette inside a mode file)
+  if (token && typeof token === "object" && !("$value" in token) && !("$type" in token)) {
+    continue;
+  }
+
   const raw = token.$value ?? token;
   const type = token.$type ?? "color";
 
   if (type === "color") {
-    let resolved = raw;
-    // Resolve references
-    if (typeof resolved === "string" && /^\{.+\}$/.test(resolved)) {
-      resolved = resolveRef(resolved);
+    // Preserve alias references — do not flatten to hex.
+    // Aliases round-trip cleanly and keep Figma variable links intact.
+    if (typeof raw === "string" && /^\{.+\}$/.test(raw)) {
+      output.theme[key] = { $type: "color", $value: raw };
+    } else {
+      // Raw Figma color object → resolve to hex
+      let resolved = raw;
+      if (typeof resolved === "string" && /^\{.+\}$/.test(resolved)) {
+        resolved = resolveRef(resolved);
+      }
+      output.theme[key] = { $type: "color", $value: toHex(resolved) };
     }
-    output.theme[key] = { $type: "color", $value: toHex(resolved) };
   } else if (type === "number") {
     let resolved = raw;
     if (typeof resolved === "string" && /^\{.+\}$/.test(resolved)) {

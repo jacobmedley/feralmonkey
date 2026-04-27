@@ -222,16 +222,7 @@
     },
     "chart-1": {
       "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.9064,
-          0.4322,
-          0.3136
-        ],
-        "alpha": 1,
-        "hex": "#E76E50"
-      },
+      "$value": "{color.chart.1}",
       "$extensions": {
         "com.figma.variableId": "VariableID:2984:3699",
         "com.figma.scopes": [
@@ -242,16 +233,7 @@
     },
     "chart-2": {
       "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.1638,
-          0.6162,
-          0.5634
-        ],
-        "alpha": 1,
-        "hex": "#2A9D90"
-      },
+      "$value": "{color.chart.2}",
       "$extensions": {
         "com.figma.variableId": "VariableID:2984:3700",
         "com.figma.scopes": [
@@ -262,16 +244,7 @@
     },
     "chart-3": {
       "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.1512,
-          0.2785,
-          0.3288
-        ],
-        "alpha": 1,
-        "hex": "#274754"
-      },
+      "$value": "{color.chart.3}",
       "$extensions": {
         "com.figma.variableId": "VariableID:2984:3701",
         "com.figma.scopes": [
@@ -282,16 +255,7 @@
     },
     "chart-4": {
       "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.9116,
-          0.769,
-          0.4084
-        ],
-        "alpha": 1,
-        "hex": "#E8C468"
-      },
+      "$value": "{color.chart.4}",
       "$extensions": {
         "com.figma.variableId": "VariableID:2984:3702",
         "com.figma.scopes": [
@@ -302,16 +266,7 @@
     },
     "chart-5": {
       "$type": "color",
-      "$value": {
-        "colorSpace": "srgb",
-        "components": [
-          0.9571,
-          0.6413,
-          0.3829
-        ],
-        "alpha": 1,
-        "hex": "#F4A462"
-      },
+      "$value": "{color.chart.5}",
       "$extensions": {
         "com.figma.variableId": "VariableID:2984:3703",
         "com.figma.scopes": [

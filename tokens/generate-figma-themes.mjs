@@ -9,6 +9,10 @@
  * Variable IDs are sourced directly from figma-tokens/Default.tokens.json
  * so links remain stable across imports.
  *
+ * Brand palette variables get stable placeholder IDs in the format:
+ *   VariableID:placeholder:<theme>:brand:<name>
+ * Figma rewrites these on first import.
+ *
  * Usage: node tokens/generate-figma-themes.mjs
  */
 
@@ -46,10 +50,35 @@ for (const [key, token] of Object.entries(defaultTokens.theme ?? {})) {
 // theme-specific variables fall back to Figma defaults
 const DEFAULT_THEME_VALUES = defaultTokens.theme ?? {};
 
+// ─── Build brand tokens for a mode file ──────────────────────────────────────
+
+function buildBrandGroup(brandMap, themeName) {
+  const brand = {};
+  for (const [name, token] of Object.entries(brandMap)) {
+    const raw = token['$value'] ?? token;
+    const hex = typeof raw === 'string' && raw.startsWith('#') ? raw : null;
+    brand[name] = {
+      '$type': 'color',
+      '$value': hex ? hexToFigmaColor(hex) : raw,
+      '$extensions': {
+        'com.figma.variableId': `VariableID:placeholder:${themeName}:brand:${name}`,
+        'com.figma.scopes': ['ALL_SCOPES'],
+        'com.figma.isOverride': true,
+      },
+    };
+  }
+  return brand;
+}
+
 // ─── Build a Figma DTCG mode file from an FMDS theme ─────────────────────────
 
-function buildModeFile(fmdsTheme, modeName) {
+function buildModeFile(fmdsTheme, modeName, themeName) {
   const theme = {};
+
+  // Emit brand palette first, if present
+  if (fmdsTheme.brand && typeof fmdsTheme.brand === 'object') {
+    theme.brand = buildBrandGroup(fmdsTheme.brand, themeName);
+  }
 
   // Start with defaults from the Figma default mode, then overlay FMDS values
   for (const [key, defaultToken] of Object.entries(DEFAULT_THEME_VALUES)) {
@@ -66,7 +95,7 @@ function buildModeFile(fmdsTheme, modeName) {
 
       if (type === 'color') {
         if (typeof raw === 'string' && raw.startsWith('{')) {
-          // Reference — keep as-is (maps to Figma color collection)
+          // Reference — keep as-is; Figma resolves variable-to-variable aliases
           value = raw;
         } else if (typeof raw === 'string' && raw.startsWith('#')) {
           value = hexToFigmaColor(raw);
@@ -127,11 +156,12 @@ for (const file of themeFiles) {
   const fmdsTheme = raw.theme ?? raw;
   const modeName = MODE_NAMES[name] ?? name;
 
-  const output = buildModeFile(fmdsTheme, modeName);
+  const output = buildModeFile(fmdsTheme, modeName, name);
   const outPath = join(outDir, `${name}.json`);
   writeFileSync(outPath, JSON.stringify(output, null, 2), 'utf8');
 
-  const overrideCount = Object.keys(fmdsTheme).length;
+  const brandCount = fmdsTheme.brand ? Object.keys(fmdsTheme.brand).length : 0;
+  const overrideCount = Object.keys(fmdsTheme).filter(k => k !== 'brand').length;
   const totalCount = Object.keys(output.theme).length;
-  console.log(`${outPath.replace(ROOT + '/', '')}  [${modeName}]  ${overrideCount} overrides / ${totalCount} total`);
+  console.log(`${outPath.replace(ROOT + '/', '')}  [${modeName}]  brand:${brandCount}  overrides:${overrideCount}  total:${totalCount}`);
 }

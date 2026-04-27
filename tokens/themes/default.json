@@ -21,6 +21,11 @@
     "ring": { "$type": "color", "$value": "{color.slate.400}" },
     "radius": { "$type": "number", "$value": 4 },
     "font-sans": { "$type": "string", "$value": "Inter" },
-    "font-display": { "$type": "string", "$value": "Inter" }
+    "font-display": { "$type": "string", "$value": "Inter" },
+    "chart-1": { "$type": "color", "$value": "{color.chart.1}" },
+    "chart-2": { "$type": "color", "$value": "{color.chart.2}" },
+    "chart-3": { "$type": "color", "$value": "{color.chart.3}" },
+    "chart-4": { "$type": "color", "$value": "{color.chart.4}" },
+    "chart-5": { "$type": "color", "$value": "{color.chart.5}" }
   }
 }
