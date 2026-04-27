@@ -1,12 +1,15 @@
 {
   "theme": {
     "brand": {
-      "navy":   { "$type": "color", "$value": "#142643" },
-      "violet": { "$type": "color", "$value": "#56449C" },
-      "teal":   { "$type": "color", "$value": "#238672" },
-      "lilac":  { "$type": "color", "$value": "#FAF0FA" },
-      "gray":   { "$type": "color", "$value": "#666666" },
-      "silver": { "$type": "color", "$value": "#CCCCCC" }
+      "navy":     { "$type": "color", "$value": "#142643" },
+      "violet":   { "$type": "color", "$value": "#56449C" },
+      "teal":     { "$type": "color", "$value": "#238672" },
+      "lilac":    { "$type": "color", "$value": "#FAF0FA" },
+      "gray":     { "$type": "color", "$value": "#666666" },
+      "silver":   { "$type": "color", "$value": "#CCCCCC" },
+      "forest":   { "$type": "color", "$value": "#12784F" },
+      "straw":    { "$type": "color", "$value": "#FFEA9E" },
+      "lavender": { "$type": "color", "$value": "#8D81C1" }
     },
     "background":             { "$type": "color",  "$value": "{color.white}" },
     "foreground":             { "$type": "color",  "$value": "{theme.brand.navy}" },
@@ -30,11 +33,11 @@
     "radius":                 { "$type": "number", "$value": 6 },
     "font-family-base":       { "$type": "string", "$value": "'WT Volkolak Grotesque', sans-serif" },
     "font-family-heading":    { "$type": "string", "$value": "'WT Volkolak Serif Text', serif" },
-    "success":                { "$type": "color",  "$value": "#12784F" },
+    "success":                { "$type": "color",  "$value": "{theme.brand.forest}" },
     "success-foreground":     { "$type": "color",  "$value": "{color.white}" },
-    "warning":                { "$type": "color",  "$value": "#FFEA9E" },
+    "warning":                { "$type": "color",  "$value": "{theme.brand.straw}" },
     "warning-foreground":     { "$type": "color",  "$value": "{theme.brand.navy}" },
-    "info":                   { "$type": "color",  "$value": "#8D81C1" },
+    "info":                   { "$type": "color",  "$value": "{theme.brand.lavender}" },
     "info-foreground":        { "$type": "color",  "$value": "{color.white}" },
     "chart-1":                { "$type": "color",  "$value": "{color.chart.1}" },
     "chart-2":                { "$type": "color",  "$value": "{color.chart.2}" },

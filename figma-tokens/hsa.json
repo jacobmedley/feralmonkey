@@ -120,6 +120,66 @@
           ],
           "com.figma.isOverride": true
         }
+      },
+      "forest": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.07058823529411765,
+            0.47058823529411764,
+            0.30980392156862746
+          ],
+          "alpha": 1,
+          "hex": "#12784F"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:placeholder:hsa:brand:forest",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.isOverride": true
+        }
+      },
+      "straw": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            1,
+            0.9176470588235294,
+            0.6196078431372549
+          ],
+          "alpha": 1,
+          "hex": "#FFEA9E"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:placeholder:hsa:brand:straw",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.isOverride": true
+        }
+      },
+      "lavender": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.5529411764705883,
+            0.5058823529411764,
+            0.7568627450980392
+          ],
+          "alpha": 1,
+          "hex": "#8D81C1"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:placeholder:hsa:brand:lavender",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.isOverride": true
+        }
       }
     },
     "radius": {

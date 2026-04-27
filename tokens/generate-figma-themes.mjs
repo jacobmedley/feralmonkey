@@ -146,8 +146,11 @@ const MODE_NAMES = {
 const themesDir = join(ROOT, 'tokens', 'themes');
 const outDir = join(ROOT, 'figma-tokens');
 
+// Only process the four canonical theme files; skip any generated imports
+const CANONICAL_THEMES = new Set(['default.json', 'fsa.json', 'hsa.json', 'patiently.json']);
+
 const themeFiles = readdirSync(themesDir)
-  .filter(f => f.endsWith('.json'))
+  .filter(f => CANONICAL_THEMES.has(f))
   .sort();
 
 for (const file of themeFiles) {
