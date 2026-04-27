@@ -1,0 +1,1204 @@
+{
+  "theme.radius": {
+    "variableId": "VariableID:2984:3698",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "theme.background": {
+    "variableId": "VariableID:2618:1429",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.foreground": {
+    "variableId": "VariableID:2618:1430",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.muted": {
+    "variableId": "VariableID:2618:1437",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.muted-foreground": {
+    "variableId": "VariableID:2618:1438",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.card": {
+    "variableId": "VariableID:2618:1443",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.card-foreground": {
+    "variableId": "VariableID:2618:1444",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.popover": {
+    "variableId": "VariableID:2618:1441",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.popover-foreground": {
+    "variableId": "VariableID:2618:1442",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.border": {
+    "variableId": "VariableID:2618:1426",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.input": {
+    "variableId": "VariableID:2618:1427",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.primary": {
+    "variableId": "VariableID:2618:1431",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.primary-foreground": {
+    "variableId": "VariableID:2618:1432",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.secondary": {
+    "variableId": "VariableID:2618:1433",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.secondary-foreground": {
+    "variableId": "VariableID:2618:1434",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.accent": {
+    "variableId": "VariableID:2618:1439",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.accent-foreground": {
+    "variableId": "VariableID:2618:1440",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.destructive": {
+    "variableId": "VariableID:2618:1435",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.destructive-foreground": {
+    "variableId": "VariableID:2618:1436",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.ring": {
+    "variableId": "VariableID:2618:1428",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.chart-1": {
+    "variableId": "VariableID:2984:3699",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.chart-2": {
+    "variableId": "VariableID:2984:3700",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.chart-3": {
+    "variableId": "VariableID:2984:3701",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.chart-4": {
+    "variableId": "VariableID:2984:3702",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.chart-5": {
+    "variableId": "VariableID:2984:3703",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.sidebar-background": {
+    "variableId": "VariableID:2984:3704",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.sidebar-foreground": {
+    "variableId": "VariableID:2984:3705",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.sidebar-primary": {
+    "variableId": "VariableID:2984:3706",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.sidebar-primary-foreground": {
+    "variableId": "VariableID:2984:3707",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.sidebar-accent": {
+    "variableId": "VariableID:2984:3708",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.sidebar-accent-foreground": {
+    "variableId": "VariableID:2984:3709",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.sidebar-border": {
+    "variableId": "VariableID:2984:3710",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "theme.sidebar-ring": {
+    "variableId": "VariableID:2984:3711",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "radius.none": {
+    "variableId": "VariableID:309:1106",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "radius.xs": {
+    "variableId": "VariableID:309:1107",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "radius.sm": {
+    "variableId": "VariableID:309:1108",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "radius.md": {
+    "variableId": "VariableID:309:1109",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "radius.lg": {
+    "variableId": "VariableID:309:1110",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "radius.xl": {
+    "variableId": "VariableID:309:1111",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "radius.2xl": {
+    "variableId": "VariableID:309:1112",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "radius.3xl": {
+    "variableId": "VariableID:309:1113",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "radius.4xl": {
+    "variableId": "VariableID:2878:2314",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "radius.full": {
+    "variableId": "VariableID:309:1114",
+    "scopes": [
+      "CORNER_RADIUS"
+    ],
+    "isOverride": true
+  },
+  "border-width.0": {
+    "variableId": "VariableID:401:1246",
+    "scopes": [
+      "STROKE_FLOAT"
+    ],
+    "isOverride": true
+  },
+  "border-width.1": {
+    "variableId": "VariableID:401:1247",
+    "scopes": [
+      "STROKE_FLOAT"
+    ],
+    "isOverride": true
+  },
+  "border-width.2": {
+    "variableId": "VariableID:401:1248",
+    "scopes": [
+      "STROKE_FLOAT"
+    ],
+    "isOverride": true
+  },
+  "border-width.4": {
+    "variableId": "VariableID:401:1249",
+    "scopes": [
+      "STROKE_FLOAT"
+    ],
+    "isOverride": true
+  },
+  "border-width.8": {
+    "variableId": "VariableID:401:1250",
+    "scopes": [
+      "STROKE_FLOAT"
+    ],
+    "isOverride": true
+  },
+  "font.size.xs": {
+    "variableId": "VariableID:2829:2332",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.sm": {
+    "variableId": "VariableID:2829:2333",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.base": {
+    "variableId": "VariableID:2829:2334",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.lg": {
+    "variableId": "VariableID:2829:2335",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.xl": {
+    "variableId": "VariableID:2829:2336",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.2xl": {
+    "variableId": "VariableID:2829:2337",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.3xl": {
+    "variableId": "VariableID:2829:2338",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.4xl": {
+    "variableId": "VariableID:2829:2339",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.5xl": {
+    "variableId": "VariableID:2829:2340",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.6xl": {
+    "variableId": "VariableID:2829:2341",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.7xl": {
+    "variableId": "VariableID:2829:2342",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.8xl": {
+    "variableId": "VariableID:2829:2343",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.size.9xl": {
+    "variableId": "VariableID:2829:2344",
+    "scopes": [
+      "FONT_SIZE"
+    ],
+    "isOverride": true
+  },
+  "font.family.sans": {
+    "variableId": "VariableID:2829:2304",
+    "scopes": [
+      "FONT_FAMILY"
+    ],
+    "isOverride": true
+  },
+  "font.family.serif": {
+    "variableId": "VariableID:2829:2305",
+    "scopes": [
+      "FONT_FAMILY"
+    ],
+    "isOverride": true
+  },
+  "font.family.mono": {
+    "variableId": "VariableID:2829:2306",
+    "scopes": [
+      "FONT_FAMILY"
+    ],
+    "isOverride": true
+  },
+  "font.weight.thin": {
+    "variableId": "VariableID:2829:2309",
+    "scopes": [
+      "FONT_STYLE"
+    ],
+    "isOverride": true
+  },
+  "font.weight.extralight": {
+    "variableId": "VariableID:2829:2310",
+    "scopes": [
+      "FONT_STYLE"
+    ],
+    "isOverride": true
+  },
+  "font.weight.light": {
+    "variableId": "VariableID:2829:2311",
+    "scopes": [
+      "FONT_STYLE"
+    ],
+    "isOverride": true
+  },
+  "font.weight.normal": {
+    "variableId": "VariableID:2829:2312",
+    "scopes": [
+      "FONT_STYLE"
+    ],
+    "isOverride": true
+  },
+  "font.weight.medium": {
+    "variableId": "VariableID:2829:2313",
+    "scopes": [
+      "FONT_STYLE"
+    ],
+    "isOverride": true
+  },
+  "font.weight.semibold": {
+    "variableId": "VariableID:2829:2314",
+    "scopes": [
+      "FONT_STYLE"
+    ],
+    "isOverride": true
+  },
+  "font.weight.bold": {
+    "variableId": "VariableID:2829:2315",
+    "scopes": [
+      "FONT_STYLE"
+    ],
+    "isOverride": true
+  },
+  "font.weight.extrabold": {
+    "variableId": "VariableID:2829:2316",
+    "scopes": [
+      "FONT_STYLE"
+    ],
+    "isOverride": true
+  },
+  "font.weight.black": {
+    "variableId": "VariableID:2829:2317",
+    "scopes": [
+      "FONT_STYLE"
+    ],
+    "isOverride": true
+  },
+  "color.black": {
+    "variableId": "VariableID:309:1196",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.white": {
+    "variableId": "VariableID:309:1197",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.transparent": {
+    "variableId": "VariableID:619:963",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.50": {
+    "variableId": "VariableID:309:1198",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.100": {
+    "variableId": "VariableID:309:1199",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.200": {
+    "variableId": "VariableID:309:1200",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.300": {
+    "variableId": "VariableID:309:1201",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.400": {
+    "variableId": "VariableID:309:1202",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.500": {
+    "variableId": "VariableID:309:1203",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.600": {
+    "variableId": "VariableID:309:1204",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.700": {
+    "variableId": "VariableID:309:1205",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.800": {
+    "variableId": "VariableID:309:1206",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.900": {
+    "variableId": "VariableID:309:1207",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.slate.950": {
+    "variableId": "VariableID:309:1208",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.50": {
+    "variableId": "VariableID:309:1209",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.100": {
+    "variableId": "VariableID:309:1210",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.200": {
+    "variableId": "VariableID:309:1211",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.300": {
+    "variableId": "VariableID:309:1212",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.400": {
+    "variableId": "VariableID:309:1213",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.500": {
+    "variableId": "VariableID:309:1214",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.600": {
+    "variableId": "VariableID:309:1215",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.700": {
+    "variableId": "VariableID:309:1216",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.800": {
+    "variableId": "VariableID:309:1217",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.900": {
+    "variableId": "VariableID:309:1218",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.gray.950": {
+    "variableId": "VariableID:309:1219",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.50": {
+    "variableId": "VariableID:309:1253",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.100": {
+    "variableId": "VariableID:309:1254",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.200": {
+    "variableId": "VariableID:309:1255",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.300": {
+    "variableId": "VariableID:309:1256",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.400": {
+    "variableId": "VariableID:309:1257",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.500": {
+    "variableId": "VariableID:309:1258",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.600": {
+    "variableId": "VariableID:309:1259",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.700": {
+    "variableId": "VariableID:309:1260",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.800": {
+    "variableId": "VariableID:309:1261",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.900": {
+    "variableId": "VariableID:309:1262",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.red.950": {
+    "variableId": "VariableID:309:1263",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.50": {
+    "variableId": "VariableID:309:1363",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.100": {
+    "variableId": "VariableID:309:1364",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.200": {
+    "variableId": "VariableID:309:1365",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.300": {
+    "variableId": "VariableID:309:1366",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.400": {
+    "variableId": "VariableID:309:1367",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.500": {
+    "variableId": "VariableID:309:1368",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.600": {
+    "variableId": "VariableID:309:1369",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.700": {
+    "variableId": "VariableID:309:1370",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.800": {
+    "variableId": "VariableID:309:1371",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.900": {
+    "variableId": "VariableID:309:1372",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.blue.950": {
+    "variableId": "VariableID:309:1373",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.50": {
+    "variableId": "VariableID:309:1308",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.100": {
+    "variableId": "VariableID:309:1309",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.200": {
+    "variableId": "VariableID:309:1310",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.300": {
+    "variableId": "VariableID:309:1311",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.400": {
+    "variableId": "VariableID:309:1312",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.500": {
+    "variableId": "VariableID:309:1313",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.600": {
+    "variableId": "VariableID:309:1314",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.700": {
+    "variableId": "VariableID:309:1315",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.800": {
+    "variableId": "VariableID:309:1316",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.900": {
+    "variableId": "VariableID:309:1317",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.green.950": {
+    "variableId": "VariableID:309:1318",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.amber.50": {
+    "variableId": "VariableID:309:1275",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.amber.500": {
+    "variableId": "VariableID:309:1280",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.violet.600": {
+    "variableId": "VariableID:309:1391",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.purple.600": {
+    "variableId": "VariableID:309:1402",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.pink.600": {
+    "variableId": "VariableID:309:1424",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.indigo.50": {
+    "variableId": "VariableID:309:1374",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.indigo.600": {
+    "variableId": "VariableID:309:1380",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.teal.600": {
+    "variableId": "VariableID:309:1336",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.yellow.400": {
+    "variableId": "VariableID:309:1290",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.zinc.50": {
+    "variableId": "VariableID:309:1220",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.zinc.950": {
+    "variableId": "VariableID:309:1230",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.neutral.50": {
+    "variableId": "VariableID:309:1231",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.neutral.950": {
+    "variableId": "VariableID:309:1241",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.lime.600": {
+    "variableId": "VariableID:309:1303",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.emerald.600": {
+    "variableId": "VariableID:309:1325",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.sky.600": {
+    "variableId": "VariableID:309:1358",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.cyan.600": {
+    "variableId": "VariableID:309:1347",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.orange.600": {
+    "variableId": "VariableID:309:1270",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "color.rose.600": {
+    "variableId": "VariableID:309:1435",
+    "scopes": [
+      "ALL_SCOPES"
+    ],
+    "isOverride": true
+  },
+  "spacing.0": {
+    "variableId": "VariableID:309:1155",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.1": {
+    "variableId": "VariableID:309:1156",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.2": {
+    "variableId": "VariableID:309:1157",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.3": {
+    "variableId": "VariableID:309:1158",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.4": {
+    "variableId": "VariableID:309:1159",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.5": {
+    "variableId": "VariableID:309:1160",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.6": {
+    "variableId": "VariableID:309:1161",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.8": {
+    "variableId": "VariableID:309:1163",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.10": {
+    "variableId": "VariableID:309:1165",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.12": {
+    "variableId": "VariableID:309:1167",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.16": {
+    "variableId": "VariableID:309:1169",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.20": {
+    "variableId": "VariableID:309:1170",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.24": {
+    "variableId": "VariableID:309:1171",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.32": {
+    "variableId": "VariableID:309:1173",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.40": {
+    "variableId": "VariableID:309:1175",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.48": {
+    "variableId": "VariableID:309:1177",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.64": {
+    "variableId": "VariableID:309:1181",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.96": {
+    "variableId": "VariableID:309:1184",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  },
+  "spacing.px": {
+    "variableId": "VariableID:309:1185",
+    "scopes": [
+      "WIDTH_HEIGHT",
+      "GAP"
+    ],
+    "isOverride": true
+  }
+}
