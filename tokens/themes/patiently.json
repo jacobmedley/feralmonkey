@@ -1,0 +1,29 @@
+{
+  "theme": {
+    "background": { "$type": "color", "$value": "#F9F8F5" },
+    "foreground": { "$type": "color", "$value": "#121E3D" },
+    "muted": { "$type": "color", "$value": "#F0EFE9" },
+    "muted-foreground": { "$type": "color", "$value": "#5B6070" },
+    "card": { "$type": "color", "$value": "#FFFFFF" },
+    "card-foreground": { "$type": "color", "$value": "#121E3D" },
+    "popover": { "$type": "color", "$value": "#FFFFFF" },
+    "popover-foreground": { "$type": "color", "$value": "#121E3D" },
+    "primary": { "$type": "color", "$value": "#121E3D" },
+    "primary-foreground": { "$type": "color", "$value": "#D9FD6F" },
+    "secondary": { "$type": "color", "$value": "#8B93F7" },
+    "secondary-foreground": { "$type": "color", "$value": "#121E3D" },
+    "accent": { "$type": "color", "$value": "#EFFEC2" },
+    "accent-foreground": { "$type": "color", "$value": "#121E3D" },
+    "destructive": { "$type": "color", "$value": "#DC2626" },
+    "destructive-foreground": { "$type": "color", "$value": "#FFFFFF" },
+    "border": { "$type": "color", "$value": "#E8E5DE" },
+    "input": { "$type": "color", "$value": "#E8E5DE" },
+    "ring": { "$type": "color", "$value": "#8B93F7" },
+    "radius": { "$type": "number", "$value": 12 },
+    "font-sans": { "$type": "string", "$value": "Figtree" },
+    "font-display": { "$type": "string", "$value": "Instrument Serif" },
+    "brand-lime": { "$type": "color", "$value": "#D9FD6F" },
+    "brand-periwinkle": { "$type": "color", "$value": "#8B93F7" },
+    "brand-tertiary": { "$type": "color", "$value": "#EFFEC2" }
+  }
+}

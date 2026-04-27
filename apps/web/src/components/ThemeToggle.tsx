@@ -9,13 +9,12 @@ const inter = Inter({
 });
 
 const THEME_KEY = "fmds-theme";
-type Theme = "default" | "theme1" | "theme2" | "theme3";
+type Theme = "default" | "fsa" | "patiently";
 
 const THEMES: { value: Theme; label: string }[] = [
-  { value: "theme1", label: "Theme 1" },
-  { value: "theme2", label: "Theme 2" },
-  { value: "theme3", label: "Theme 3" },
-  { value: "default", label: "Default" },
+  { value: "default", label: "Wireframe" },
+  { value: "fsa", label: "FSA Store" },
+  { value: "patiently", label: "Patiently" },
 ];
 
 export function ThemeToggle() {
@@ -23,25 +22,16 @@ export function ThemeToggle() {
 
   useEffect(() => {
     const stored = localStorage.getItem(THEME_KEY) as Theme | null;
-    const validThemes: Theme[] = ["theme1", "theme2", "theme3"];
-    if (stored && !validThemes.includes(stored)) {
-      localStorage.removeItem(THEME_KEY);
-      document.documentElement.removeAttribute("data-theme");
-    } else if (stored) {
-      setTheme(stored);
-      document.documentElement.setAttribute("data-theme", stored);
-    }
+    const valid: Theme[] = ["default", "fsa", "patiently"];
+    const active = stored && valid.includes(stored) ? stored : "default";
+    setTheme(active);
+    document.documentElement.setAttribute("data-theme", active);
   }, []);
 
   function applyTheme(next: Theme) {
     setTheme(next);
-    if (next === "default") {
-      document.documentElement.removeAttribute("data-theme");
-      localStorage.removeItem(THEME_KEY);
-    } else {
-      document.documentElement.setAttribute("data-theme", next);
-      localStorage.setItem(THEME_KEY, next);
-    }
+    document.documentElement.setAttribute("data-theme", next);
+    localStorage.setItem(THEME_KEY, next);
   }
 
   return (

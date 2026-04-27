@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter, Playfair_Display, DM_Sans, Space_Grotesk } from "next/font/google";
+import { Geist, Geist_Mono, Inter, Plus_Jakarta_Sans, Figtree, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { ThemeToggle } from "../components/ThemeToggle";
 
@@ -15,22 +15,27 @@ const geistMono = Geist_Mono({
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-base-default",
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const playfair = Playfair_Display({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-base-theme1",
+  variable: "--font-jakarta",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const dmSans = DM_Sans({
+const figtree = Figtree({
   subsets: ["latin"],
-  variable: "--font-base-theme2",
+  variable: "--font-figtree",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const spaceGrotesk = Space_Grotesk({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-base-theme3",
+  variable: "--font-instrument",
+  style: ["normal", "italic"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -46,11 +51,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${playfair.variable} ${dmSans.variable} ${spaceGrotesk.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} ${plusJakartaSans.variable} ${figtree.variable} ${instrumentSerif.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('fmds-theme');if(t&&['theme1','theme2','theme3'].includes(t))document.documentElement.setAttribute('data-theme',t);else if(t)localStorage.removeItem('fmds-theme');})();` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(){var t=localStorage.getItem('fmds-theme')||'default';document.documentElement.setAttribute('data-theme',t);})();` }} />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeToggle />

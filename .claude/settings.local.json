@@ -4,7 +4,9 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:api.github.com)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(npx shadcn@latest add --cwd packages/ui --overwrite separator skeleton scroll-area aspect-ratio label checkbox radio-group switch textarea select slider dialog sheet popover tooltip dropdown-menu context-menu navigation-menu tabs breadcrumb pagination command table avatar progress hover-card collapsible sonner alert-dialog)",
+      "Bash(git restore *)"
     ]
   }
 }
