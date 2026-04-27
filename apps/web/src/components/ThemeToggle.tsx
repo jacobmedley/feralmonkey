@@ -9,11 +9,12 @@ const inter = Inter({
 });
 
 const THEME_KEY = "fmds-theme";
-type Theme = "default" | "fsa" | "patiently";
+type Theme = "default" | "fsa" | "hsa" | "patiently";
 
 const THEMES: { value: Theme; label: string }[] = [
-  { value: "default", label: "Wireframe" },
-  { value: "fsa", label: "FSA Store" },
+  { value: "default",   label: "Wireframe" },
+  { value: "fsa",       label: "FSA Store" },
+  { value: "hsa",       label: "HSA Store" },
   { value: "patiently", label: "Patiently" },
 ];
 
@@ -22,7 +23,7 @@ export function ThemeToggle() {
 
   useEffect(() => {
     const stored = localStorage.getItem(THEME_KEY) as Theme | null;
-    const valid: Theme[] = ["default", "fsa", "patiently"];
+    const valid: Theme[] = ["default", "fsa", "hsa", "patiently"];
     const active = stored && valid.includes(stored) ? stored : "default";
     setTheme(active);
     document.documentElement.setAttribute("data-theme", active);
