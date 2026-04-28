@@ -34,12 +34,12 @@ function hexToFigmaColor(hex) {
   return { colorSpace: 'srgb', components: [r, g, b], alpha: 1, hex: `#${h.toUpperCase()}` };
 }
 
-// ─── Load the FMDS Default mode file ─────────────────────────────────────────
-// default.json is the canonical source of variable IDs and fallback values.
-// It is generated first each run, so all other modes derive from it.
+// ─── Load the Wireframe mode file ────────────────────────────────────────────
+// wireframe.tokens.json is the canonical source of variable IDs and fallback
+// values. It is generated first each run, so all other modes derive from it.
 
 const defaultModeFile = JSON.parse(
-  readFileSync(join(ROOT, 'figma-tokens', 'default.json'), 'utf8')
+  readFileSync(join(ROOT, 'figma-tokens', 'wireframe.tokens.json'), 'utf8')
 );
 
 // Extract variable IDs from the theme collection
@@ -134,13 +134,20 @@ function buildModeFile(fmdsTheme, modeName, themeName) {
   return { theme, '$extensions': { 'com.figma.modeName': modeName } };
 }
 
-// ─── Mode name mapping ────────────────────────────────────────────────────────
+// ─── Mode name and output filename mappings ───────────────────────────────────
 
 const MODE_NAMES = {
-  default: 'FMDS Default',
-  fsa: 'FSA',
-  hsa: 'HSA',
+  default:   'FMDS Default',
+  fsa:       'FSA',
+  hsa:       'HSA',
   patiently: 'Patiently',
+};
+
+const OUTPUT_NAMES = {
+  default:   'wireframe.tokens.json',
+  fsa:       'fsa.tokens.json',
+  hsa:       'hsa.tokens.json',
+  patiently: 'patiently.tokens.json',
 };
 
 // ─── Process all theme files ──────────────────────────────────────────────────
@@ -162,7 +169,7 @@ for (const file of themeFiles) {
   const modeName = MODE_NAMES[name] ?? name;
 
   const output = buildModeFile(fmdsTheme, modeName, name);
-  const outPath = join(outDir, `${name}.json`);
+  const outPath = join(outDir, OUTPUT_NAMES[name] ?? `${name}.tokens.json`);
   writeFileSync(outPath, JSON.stringify(output, null, 2), 'utf8');
 
   const brandCount = fmdsTheme.brand ? Object.keys(fmdsTheme.brand).length : 0;
