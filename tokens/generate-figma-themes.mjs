@@ -1,13 +1,14 @@
 /**
  * generate-figma-themes.mjs
  *
- * Reads FMDS theme files (tokens/themes/*.json) and Default.tokens.json,
- * then writes per-theme Figma Variables DTCG mode files to figma-tokens/.
+ * Reads FMDS theme files (tokens/themes/*.json) and the existing
+ * figma-tokens/default.json (the FMDS Default mode file), then writes
+ * per-theme Figma Variables DTCG mode files to figma-tokens/.
  *
  * Each output file represents one mode of the "theme" collection and can be
  * imported into Figma via the Variables REST API or a compatible plugin.
- * Variable IDs are sourced directly from figma-tokens/Default.tokens.json
- * so links remain stable across imports.
+ * Variable IDs are sourced from figma-tokens/default.json so links remain
+ * stable across imports.
  *
  * Brand palette variables get stable placeholder IDs in the format:
  *   VariableID:placeholder:<theme>:brand:<name>
@@ -33,22 +34,23 @@ function hexToFigmaColor(hex) {
   return { colorSpace: 'srgb', components: [r, g, b], alpha: 1, hex: `#${h.toUpperCase()}` };
 }
 
-// ─── Load Default.tokens.json ─────────────────────────────────────────────────
+// ─── Load the FMDS Default mode file ─────────────────────────────────────────
+// default.json is the canonical source of variable IDs and fallback values.
+// It is generated first each run, so all other modes derive from it.
 
-const defaultTokens = JSON.parse(
-  readFileSync(join(ROOT, 'figma-tokens', 'Default.tokens.json'), 'utf8')
+const defaultModeFile = JSON.parse(
+  readFileSync(join(ROOT, 'figma-tokens', 'default.json'), 'utf8')
 );
 
 // Extract variable IDs from the theme collection
 const THEME_VARIABLE_IDS = {};
-for (const [key, token] of Object.entries(defaultTokens.theme ?? {})) {
+for (const [key, token] of Object.entries(defaultModeFile.theme ?? {})) {
   const id = token?.$extensions?.['com.figma.variableId'];
   if (id) THEME_VARIABLE_IDS[key] = id;
 }
 
-// Pull default values from the Default.tokens.json theme so missing
-// theme-specific variables fall back to Figma defaults
-const DEFAULT_THEME_VALUES = defaultTokens.theme ?? {};
+// Pull default values so tokens not overridden by a theme fall back correctly
+const DEFAULT_THEME_VALUES = defaultModeFile.theme ?? {};
 
 // ─── Build brand tokens for a mode file ──────────────────────────────────────
 

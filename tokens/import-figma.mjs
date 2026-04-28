@@ -13,7 +13,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const figmaFile = path.join(root, "figma-tokens/Default.tokens.json");
+const figmaFile = path.join(root, "figma-tokens/default.json");
 const themesDir = path.join(root, "tokens/themes");
 
 const figma = JSON.parse(fs.readFileSync(figmaFile, "utf8"));
