@@ -54,20 +54,44 @@ const DEFAULT_THEME_VALUES = defaultModeFile.theme ?? {};
 
 // ─── Build brand tokens for a mode file ──────────────────────────────────────
 
+function isRamp(entry) {
+  if (!entry || typeof entry !== 'object') return false;
+  if ('$value' in entry || '$type' in entry) return false;
+  return Object.keys(entry).some(k => /^\d+$/.test(k));
+}
+
+function buildBrandToken(raw, variableId) {
+  const hex = typeof raw === 'string' && raw.startsWith('#') ? raw : null;
+  return {
+    '$type': 'color',
+    '$value': hex ? hexToFigmaColor(hex) : raw,
+    '$extensions': {
+      'com.figma.variableId': variableId,
+      'com.figma.scopes': ['ALL_SCOPES'],
+      'com.figma.isOverride': true,
+    },
+  };
+}
+
 function buildBrandGroup(brandMap, themeName) {
   const brand = {};
-  for (const [name, token] of Object.entries(brandMap)) {
-    const raw = token['$value'] ?? token;
-    const hex = typeof raw === 'string' && raw.startsWith('#') ? raw : null;
-    brand[name] = {
-      '$type': 'color',
-      '$value': hex ? hexToFigmaColor(hex) : raw,
-      '$extensions': {
-        'com.figma.variableId': `VariableID:placeholder:${themeName}:brand:${name}`,
-        'com.figma.scopes': ['ALL_SCOPES'],
-        'com.figma.isOverride': true,
-      },
-    };
+  for (const [name, entry] of Object.entries(brandMap)) {
+    if (isRamp(entry)) {
+      brand[name] = {};
+      for (const [step, token] of Object.entries(entry)) {
+        const raw = token['$value'] ?? token;
+        brand[name][step] = buildBrandToken(
+          raw,
+          `VariableID:placeholder:${themeName}:brand:${name}:${step}`,
+        );
+      }
+    } else {
+      const raw = entry['$value'] ?? entry;
+      brand[name] = buildBrandToken(
+        raw,
+        `VariableID:placeholder:${themeName}:brand:${name}`,
+      );
+    }
   }
   return brand;
 }
@@ -172,7 +196,9 @@ for (const file of themeFiles) {
   const outPath = join(outDir, OUTPUT_NAMES[name] ?? `${name}.tokens.json`);
   writeFileSync(outPath, JSON.stringify(output, null, 2), 'utf8');
 
-  const brandCount = fmdsTheme.brand ? Object.keys(fmdsTheme.brand).length : 0;
+  const brandCount = fmdsTheme.brand
+    ? Object.values(fmdsTheme.brand).reduce((sum, v) => sum + (isRamp(v) ? Object.keys(v).length : 1), 0)
+    : 0;
   const overrideCount = Object.keys(fmdsTheme).filter(k => k !== 'brand').length;
   const totalCount = Object.keys(output.theme).length;
   console.log(`${outPath.replace(ROOT + '/', '')}  [${modeName}]  brand:${brandCount}  overrides:${overrideCount}  total:${totalCount}`);

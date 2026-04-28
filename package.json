@@ -7,11 +7,13 @@
   ],
   "scripts": {
     "tokens:build": "node tokens/build-css-vars.mjs",
-    "tokens:watch": "node --watch tokens/build-css-vars.mjs",
+    "tokens:watch": "node tokens/watch.mjs",
     "tokens:import-figma": "node tokens/import-figma.mjs",
     "tokens:export-figma": "node tokens/generate-figma-themes.mjs",
     "tokens:sync": "npm run tokens:import-figma && npm run tokens:build",
-    "prebuild": "npm run tokens:build"
+    "tokens:verify-ramps": "node tokens/derive-ramps.mjs --verify",
+    "tokens:audit-contrast": "node tokens/audit-contrast.mjs",
+    "prebuild": "node tokens/derive-ramps.mjs --verify && node tokens/build-css-vars.mjs"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
