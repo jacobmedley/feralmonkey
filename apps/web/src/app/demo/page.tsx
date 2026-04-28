@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   // Controls
   Button,
@@ -44,6 +44,37 @@ import {
   Tooltip, TooltipContent, TooltipProvider, TooltipTrigger,
 } from "@fmds/ui";
 
+const BRAND_HUES: Record<string, string[]> = {
+  patiently: ["navy", "lime", "iris", "mint", "cream", "sand", "stone", "ash"],
+  fsa:       ["navy", "crimson", "blush", "sky", "mist", "slate"],
+  hsa:       ["navy", "violet", "teal", "lilac", "gray", "silver", "forest", "straw", "lavender"],
+};
+
+const RAMP_STEPS = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+
+const SEMANTIC_TOKENS = [
+  { label: "background",           cssVar: "--background" },
+  { label: "foreground",           cssVar: "--foreground" },
+  { label: "muted",                cssVar: "--muted" },
+  { label: "muted-foreground",     cssVar: "--muted-foreground" },
+  { label: "card",                 cssVar: "--card" },
+  { label: "card-foreground",      cssVar: "--card-foreground" },
+  { label: "primary",              cssVar: "--primary" },
+  { label: "primary-foreground",   cssVar: "--primary-foreground" },
+  { label: "secondary",            cssVar: "--secondary" },
+  { label: "secondary-foreground", cssVar: "--secondary-foreground" },
+  { label: "accent",               cssVar: "--accent" },
+  { label: "accent-foreground",    cssVar: "--accent-foreground" },
+  { label: "border",               cssVar: "--border" },
+  { label: "input",                cssVar: "--input" },
+  { label: "ring",                 cssVar: "--ring" },
+  { label: "destructive",          cssVar: "--destructive" },
+  { label: "destructive-fg",       cssVar: "--destructive-foreground" },
+  { label: "success",              cssVar: "--success" },
+  { label: "warning",              cssVar: "--warning" },
+  { label: "info",                 cssVar: "--info" },
+];
+
 function SectionDivider() {
   return <hr className="border-border" />;
 }
@@ -75,6 +106,16 @@ export default function DemoPage() {
   const [switchOn, setSwitchOn] = useState(false);
   const [checked, setChecked] = useState(false);
   const [collapsibleOpen, setCollapsibleOpen] = useState(false);
+  const [activeTheme, setActiveTheme] = useState<string>("default");
+
+  useEffect(() => {
+    const el = document.documentElement;
+    const update = () => setActiveTheme(el.getAttribute("data-theme") || "default");
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(el, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <TooltipProvider>
@@ -98,33 +139,76 @@ export default function DemoPage() {
 
           <SectionDivider />
 
-          {/* ── Theme Swatch ─────────────────────────────────────────────── */}
+          {/* ── Brand Palette ─────────────────────────────────────────────── */}
           <section>
-            <SectionHeading title="Active Theme Tokens" description="Color swatches for the current theme's semantic token set." />
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {[
-                { label: "background",        var: "--background" },
-                { label: "foreground",        var: "--foreground" },
-                { label: "primary",           var: "--primary" },
-                { label: "primary-foreground",var: "--primary-foreground" },
-                { label: "secondary",         var: "--secondary" },
-                { label: "accent",            var: "--accent" },
-                { label: "muted",             var: "--muted" },
-                { label: "muted-foreground",  var: "--muted-foreground" },
-                { label: "card",              var: "--card" },
-                { label: "border",            var: "--border" },
-                { label: "destructive",       var: "--destructive" },
-                { label: "success",           var: "--success" },
-                { label: "warning",           var: "--warning" },
-                { label: "info",              var: "--info" },
-                { label: "ring",              var: "--ring" },
-                { label: "input",             var: "--input" },
-              ].map(({ label, var: cssVar }) => (
-                <div key={label} className="flex flex-col gap-1.5">
-                  <div className="h-14 w-full rounded-md border border-border" style={{ background: `hsl(var(${cssVar}))` }} />
-                  <span className="font-mono text-xs text-foreground leading-tight">{label}</span>
+            <SectionHeading
+              title="Brand Palette"
+              description="OKLab 10-step ramps. Step 500 is the locked brand base. Steps 50–400 are lighter; 600–900 darker."
+            />
+            {BRAND_HUES[activeTheme] ? (
+              <div className="space-y-3">
+                {BRAND_HUES[activeTheme].map((hue) => (
+                  <div key={hue} className="flex items-start gap-3">
+                    <span className="w-20 shrink-0 pt-3 font-mono text-xs text-muted-foreground capitalize">
+                      {hue}
+                    </span>
+                    <div className="flex flex-1 gap-px">
+                      {RAMP_STEPS.map((step) => (
+                        <div key={step} className="flex flex-1 flex-col items-center gap-1">
+                          <div
+                            className={`w-full rounded-sm ${step === "500" ? "h-12 ring-2 ring-offset-2 ring-foreground/25" : "h-10"}`}
+                            style={{ background: `hsl(var(--brand-${hue}-${step}))` }}
+                            title={`--brand-${hue}-${step}`}
+                          />
+                          <span className={`tabular-nums font-mono text-[10px] ${step === "500" ? "font-semibold text-foreground" : "text-muted-foreground"}`}>
+                            {step}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground">
+                Wireframe theme aliases into{" "}
+                <code className="rounded bg-muted px-1 font-mono text-xs">color.slate.*</code> — no per-theme brand palette.
+              </p>
+            )}
+          </section>
+
+          <SectionDivider />
+
+          {/* ── Semantic Tokens ───────────────────────────────────────────── */}
+          <section>
+            <SectionHeading
+              title="Semantic Tokens"
+              description="Active theme CSS variables. Every component consumes these — never raw hex."
+            />
+            <div className="grid grid-cols-3 gap-3 sm:grid-cols-5">
+              {SEMANTIC_TOKENS.map(({ label, cssVar }) => (
+                <div key={label} className="space-y-1.5">
+                  <div
+                    className="h-14 w-full rounded-md border border-border/50"
+                    style={{ background: `hsl(var(${cssVar}))` }}
+                    title={cssVar}
+                  />
+                  <span className="block font-mono text-[11px] leading-tight text-muted-foreground">
+                    {label}
+                  </span>
                 </div>
               ))}
+            </div>
+            <div className="mt-6">
+              <p className="mb-2 text-xs text-muted-foreground">Chart colors — shared primitives, identical across all themes</p>
+              <div className="flex gap-2">
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <div key={n} className="flex flex-col items-center gap-1">
+                    <div className="h-10 w-16 rounded-md" style={{ background: `hsl(var(--chart-${n}))` }} />
+                    <span className="font-mono text-[10px] text-muted-foreground">chart-{n}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
 

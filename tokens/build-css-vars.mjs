@@ -148,6 +148,22 @@ for (const file of themeFiles) {
     lines.push(`  --${key}: ${value};`);
   }
 
+  // Emit brand palette CSS vars so demo and tooling can reference them at runtime.
+  // Names: --brand-<hue>-<step> (e.g. --brand-navy-500). Same HSL format as semantic vars.
+  const brandGroup = tokenMap.brand;
+  if (brandGroup && typeof brandGroup === "object") {
+    for (const [hue, ramp] of Object.entries(brandGroup)) {
+      if (!isNestedGroup(ramp)) continue;
+      for (const [step, token] of Object.entries(ramp)) {
+        const val = unwrapDtcg(token);
+        const resolved = typeof val === "string" && /^\{.+\}$/.test(val)
+          ? resolveReference(val)
+          : val;
+        lines.push(`  --brand-${hue}-${step}: ${toCssValue(resolved, hue)};`);
+      }
+    }
+  }
+
   if (themeName === "default") {
     const radius = primitives.radius ?? {};
     if (radius.sm) lines.push(`  --radius-sm: ${radius.sm};`);
