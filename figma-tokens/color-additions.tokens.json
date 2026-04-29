@@ -1,0 +1,51 @@
+{
+  "color": {
+    "rose": {
+      "500": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.803921568627451,
+            0.23529411764705882,
+            0.3764705882352941
+          ],
+          "alpha": 1,
+          "hex": "#CD3C60"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:placeholder:color:rose:500",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.isOverride": false
+        }
+      }
+    },
+    "red": {
+      "600": {
+        "$type": "color",
+        "$value": {
+          "colorSpace": "srgb",
+          "components": [
+            0.8627450980392157,
+            0.1568627450980392,
+            0.1568627450980392
+          ],
+          "alpha": 1,
+          "hex": "#DC2828"
+        },
+        "$extensions": {
+          "com.figma.variableId": "VariableID:placeholder:color:red:600",
+          "com.figma.scopes": [
+            "ALL_SCOPES"
+          ],
+          "com.figma.isOverride": false
+        }
+      }
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Wireframes"
+  }
+}

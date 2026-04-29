@@ -2,7 +2,7 @@
   "theme": {
     "radius": {
       "$type": "number",
-      "$value": 8
+      "$value": 4
     },
     "background": {
       "$type": "color",
@@ -10,7 +10,7 @@
     },
     "foreground": {
       "$type": "color",
-      "$value": "{color.slate.950}"
+      "$value": "{color.slate.900}"
     },
     "muted": {
       "$type": "color",
@@ -26,7 +26,7 @@
     },
     "card-foreground": {
       "$type": "color",
-      "$value": "{color.slate.950}"
+      "$value": "{color.slate.900}"
     },
     "popover": {
       "$type": "color",
@@ -34,27 +34,27 @@
     },
     "popover-foreground": {
       "$type": "color",
-      "$value": "{color.slate.950}"
+      "$value": "{color.slate.900}"
     },
     "border": {
       "$type": "color",
-      "$value": "{color.slate.200}"
+      "$value": "{color.slate.300}"
     },
     "input": {
       "$type": "color",
-      "$value": "{color.slate.200}"
+      "$value": "{color.slate.300}"
     },
     "primary": {
       "$type": "color",
-      "$value": "{color.blue.600}"
+      "$value": "{color.slate.700}"
     },
     "primary-foreground": {
       "$type": "color",
-      "$value": "{color.slate.50}"
+      "$value": "{color.white}"
     },
     "secondary": {
       "$type": "color",
-      "$value": "{color.slate.100}"
+      "$value": "{color.slate.200}"
     },
     "secondary-foreground": {
       "$type": "color",
@@ -70,15 +70,15 @@
     },
     "destructive": {
       "$type": "color",
-      "$value": "{color.red.600}"
+      "$value": "{color.red.500}"
     },
     "destructive-foreground": {
       "$type": "color",
-      "$value": "{color.slate.50}"
+      "$value": "{color.white}"
     },
     "ring": {
       "$type": "color",
-      "$value": "{color.slate.950}"
+      "$value": "{color.slate.400}"
     },
     "chart-1": {
       "$type": "color",

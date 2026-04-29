@@ -2,22 +2,24 @@
  * generate-figma-themes.mjs
  *
  * Reads FMDS theme files (tokens/themes/*.json) and the existing
- * figma-tokens/default.json (the FMDS Default mode file), then writes
+ * figma-tokens/wireframe.tokens.json (the FMDS Default mode file), then writes
  * per-theme Figma Variables DTCG mode files to figma-tokens/.
  *
- * Each output file represents one mode of the "theme" collection and can be
- * imported into Figma via the Variables REST API or a compatible plugin.
- * Variable IDs are sourced from figma-tokens/default.json so links remain
- * stable across imports.
+ * Output per brand theme (FSA, HSA, Patiently):
+ *   figma-tokens/{name}-brand.tokens.json  — brand ramp variables, "brand" collection
+ *   figma-tokens/{name}.tokens.json        — semantic alias tokens, "theme" collection
  *
- * Brand palette variables get stable placeholder IDs in the format:
- *   VariableID:placeholder:<theme>:brand:<name>
- * Figma rewrites these on first import.
+ * Import order into Figma:
+ *   1. {name}-brand.tokens.json first (creates brand variables, isOverride: false)
+ *   2. {name}.tokens.json second (sets semantic aliases that reference brand collection)
+ *
+ * Brand aliases in Figma use {brand.X.N} (separate collection).
+ * Code-side themes still use {theme.brand.X.N}; the generator translates on emit.
  *
  * Usage: node tokens/generate-figma-themes.mjs
  */
 
-import { readFileSync, writeFileSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs';
 import { join, dirname, basename } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -34,25 +36,56 @@ function hexToFigmaColor(hex) {
   return { colorSpace: 'srgb', components: [r, g, b], alpha: 1, hex: `#${h.toUpperCase()}` };
 }
 
+// Translate code-side alias paths to Figma collection paths.
+// {theme.brand.navy.500} → {brand.navy.500}  (brand lives in its own Figma collection)
+function translateAlias(raw) {
+  if (typeof raw === 'string' && raw.startsWith('{theme.brand.')) {
+    return raw.replace('{theme.brand.', '{brand.');
+  }
+  return raw;
+}
+
+// ─── Bug 3 fix — preserve real variableIds across regenerations ───────────────
+// After a successful Figma import, real IDs replace placeholders. This loader
+// reads existing files and returns a Map<tokenPath, realId> so the generator
+// reuses real IDs instead of overwriting them with fresh placeholders.
+
+function walkTokens(obj, cb, path = '') {
+  if (!obj || typeof obj !== 'object') return;
+  if ('$type' in obj || '$value' in obj) { cb(obj, path); return; }
+  for (const [key, val] of Object.entries(obj)) {
+    walkTokens(val, cb, path ? `${path}.${key}` : key);
+  }
+}
+
+function loadExistingIds(filepath) {
+  if (!existsSync(filepath)) return new Map();
+  const existing = JSON.parse(readFileSync(filepath, 'utf8'));
+  const ids = new Map();
+  walkTokens(existing, (token, path) => {
+    const id = token.$extensions?.['com.figma.variableId'];
+    if (id && !id.startsWith('VariableID:placeholder:')) {
+      ids.set(path, id);
+    }
+  });
+  return ids;
+}
+
 // ─── Load the Wireframe mode file ────────────────────────────────────────────
-// wireframe.tokens.json is the canonical source of variable IDs and fallback
-// values. It is generated first each run, so all other modes derive from it.
 
 const defaultModeFile = JSON.parse(
   readFileSync(join(ROOT, 'figma-tokens', 'wireframe.tokens.json'), 'utf8')
 );
 
-// Extract variable IDs from the theme collection
 const THEME_VARIABLE_IDS = {};
 for (const [key, token] of Object.entries(defaultModeFile.theme ?? {})) {
   const id = token?.$extensions?.['com.figma.variableId'];
   if (id) THEME_VARIABLE_IDS[key] = id;
 }
 
-// Pull default values so tokens not overridden by a theme fall back correctly
 const DEFAULT_THEME_VALUES = defaultModeFile.theme ?? {};
 
-// ─── Build brand tokens for a mode file ──────────────────────────────────────
+// ─── Brand token builders ─────────────────────────────────────────────────────
 
 function isRamp(entry) {
   if (!entry || typeof entry !== 'object') return false;
@@ -68,50 +101,61 @@ function buildBrandToken(raw, variableId) {
     '$extensions': {
       'com.figma.variableId': variableId,
       'com.figma.scopes': ['ALL_SCOPES'],
-      'com.figma.isOverride': true,
+      'com.figma.isOverride': false,  // Bug 1 fix: brand vars are NEW, not overrides
     },
   };
 }
 
-function buildBrandGroup(brandMap, themeName) {
+function buildBrandGroup(brandMap, themeName, existingIds) {
   const brand = {};
   for (const [name, entry] of Object.entries(brandMap)) {
     if (isRamp(entry)) {
       brand[name] = {};
       for (const [step, token] of Object.entries(entry)) {
         const raw = token['$value'] ?? token;
-        brand[name][step] = buildBrandToken(
-          raw,
-          `VariableID:placeholder:${themeName}:brand:${name}:${step}`,
-        );
+        // Bug 3 fix: prefer real ID from prior export over placeholder
+        const idKey = `brand.${name}.${step}`;
+        const variableId = existingIds.get(idKey)
+          ?? `VariableID:placeholder:${themeName}:brand:${name}:${step}`;
+        brand[name][step] = buildBrandToken(raw, variableId);
       }
     } else {
       const raw = entry['$value'] ?? entry;
-      brand[name] = buildBrandToken(
-        raw,
-        `VariableID:placeholder:${themeName}:brand:${name}`,
-      );
+      const idKey = `brand.${name}`;
+      const variableId = existingIds.get(idKey)
+        ?? `VariableID:placeholder:${themeName}:brand:${name}`;
+      brand[name] = buildBrandToken(raw, variableId);
     }
   }
   return brand;
 }
 
-// ─── Build a Figma DTCG mode file from an FMDS theme ─────────────────────────
+// ─── Build a brand-only Figma DTCG mode file ─────────────────────────────────
+// Bug 2 fix: brand variables live in their own "brand" collection (not "theme").
+// isOverride: false — these are new variables, not mode overrides.
+// Import this file FIRST so brand variables exist before semantic aliases reference them.
 
-function buildModeFile(fmdsTheme, modeName, themeName) {
+function buildBrandModeFile(brandMap, modeName, themeName, existingIds) {
+  return {
+    brand: buildBrandGroup(brandMap, themeName, existingIds),
+    '$extensions': {
+      'com.figma.modeName': modeName,
+      'com.figma.collectionName': 'brand',  // Bug 2 fix: explicit separate collection
+    },
+  };
+}
+
+// ─── Build a semantic-alias-only Figma DTCG mode file ────────────────────────
+// Targets the "theme" collection. Contains no brand group.
+// Aliases use {brand.X.N} — cross-collection refs to the brand collection.
+// Import AFTER the brand file so alias targets resolve.
+
+function buildModeFile(fmdsTheme, modeName) {
   const theme = {};
 
-  // Emit brand palette first, if present
-  if (fmdsTheme.brand && typeof fmdsTheme.brand === 'object') {
-    theme.brand = buildBrandGroup(fmdsTheme.brand, themeName);
-  }
-
-  // Start with defaults from the Figma default mode, then overlay FMDS values
   for (const [key, defaultToken] of Object.entries(DEFAULT_THEME_VALUES)) {
     const id = THEME_VARIABLE_IDS[key];
     const scopes = defaultToken?.$extensions?.['com.figma.scopes'] ?? ['ALL_SCOPES'];
-
-    // Check if the FMDS theme overrides this key
     const fmdsToken = fmdsTheme[key];
 
     let value;
@@ -121,12 +165,12 @@ function buildModeFile(fmdsTheme, modeName, themeName) {
 
       if (type === 'color') {
         if (typeof raw === 'string' && raw.startsWith('{')) {
-          // Reference — keep as-is; Figma resolves variable-to-variable aliases
-          value = raw;
+          // Translate {theme.brand.X.N} → {brand.X.N} for Figma cross-collection alias
+          value = translateAlias(raw);
         } else if (typeof raw === 'string' && raw.startsWith('#')) {
           value = hexToFigmaColor(raw);
         } else {
-          value = raw; // already a Figma color object or pass-through
+          value = raw;
         }
         theme[key] = {
           '$type': 'color',
@@ -147,7 +191,6 @@ function buildModeFile(fmdsTheme, modeName, themeName) {
         };
       }
     } else {
-      // Not overridden — carry forward the Figma default value unchanged
       theme[key] = {
         ...defaultToken,
         '$extensions': { 'com.figma.variableId': id, 'com.figma.scopes': scopes, 'com.figma.isOverride': true },
@@ -156,6 +199,19 @@ function buildModeFile(fmdsTheme, modeName, themeName) {
   }
 
   return { theme, '$extensions': { 'com.figma.modeName': modeName } };
+}
+
+// ─── Post-emit assertions ─────────────────────────────────────────────────────
+
+function assertOverrideFlags(fileObj, rootKey, expected, label) {
+  const mismatches = [];
+  walkTokens(fileObj[rootKey] ?? {}, (token, path) => {
+    const ovr = token.$extensions?.['com.figma.isOverride'];
+    if (ovr !== expected) mismatches.push(`  ${path}: expected isOverride=${expected}, got ${ovr}`);
+  });
+  if (mismatches.length) {
+    throw new Error(`${label} override-flag assertion failed:\n${mismatches.join('\n')}`);
+  }
 }
 
 // ─── Mode name and output filename mappings ───────────────────────────────────
@@ -174,12 +230,17 @@ const OUTPUT_NAMES = {
   patiently: 'patiently.tokens.json',
 };
 
+const BRAND_OUTPUT_NAMES = {
+  fsa:       'fsa-brand.tokens.json',
+  hsa:       'hsa-brand.tokens.json',
+  patiently: 'patiently-brand.tokens.json',
+};
+
 // ─── Process all theme files ──────────────────────────────────────────────────
 
 const themesDir = join(ROOT, 'tokens', 'themes');
 const outDir = join(ROOT, 'figma-tokens');
 
-// Only process the four canonical theme files; skip any generated imports
 const CANONICAL_THEMES = new Set(['default.json', 'fsa.json', 'hsa.json', 'patiently.json']);
 
 const themeFiles = readdirSync(themesDir)
@@ -192,14 +253,35 @@ for (const file of themeFiles) {
   const fmdsTheme = raw.theme ?? raw;
   const modeName = MODE_NAMES[name] ?? name;
 
-  const output = buildModeFile(fmdsTheme, modeName, name);
-  const outPath = join(outDir, OUTPUT_NAMES[name] ?? `${name}.tokens.json`);
-  writeFileSync(outPath, JSON.stringify(output, null, 2), 'utf8');
+  // Pass 1 — brand collection file (new variables, isOverride: false)
+  if (fmdsTheme.brand && BRAND_OUTPUT_NAMES[name]) {
+    const brandPath = join(outDir, BRAND_OUTPUT_NAMES[name]);
+    const existingIds = loadExistingIds(brandPath);
+    const brandOutput = buildBrandModeFile(fmdsTheme.brand, modeName, name, existingIds);
 
-  const brandCount = fmdsTheme.brand
-    ? Object.values(fmdsTheme.brand).reduce((sum, v) => sum + (isRamp(v) ? Object.keys(v).length : 1), 0)
-    : 0;
+    assertOverrideFlags(brandOutput, 'brand', false, BRAND_OUTPUT_NAMES[name]);
+
+    writeFileSync(brandPath, JSON.stringify(brandOutput, null, 2), 'utf8');
+    const brandCount = Object.values(fmdsTheme.brand).reduce(
+      (sum, v) => sum + (isRamp(v) ? Object.keys(v).length : 1), 0
+    );
+    const realIdCount = [...existingIds.keys()].length;
+    console.log(
+      `${brandPath.replace(ROOT + '/', '')}  [brand/${modeName}]  vars:${brandCount}  ` +
+      `realIds:${realIdCount}  (import FIRST — creates brand variables)`
+    );
+  }
+
+  // Pass 2 — semantic aliases file (overrides in theme collection, isOverride: true)
+  const output = buildModeFile(fmdsTheme, modeName);
+  const outPath = join(outDir, OUTPUT_NAMES[name] ?? `${name}.tokens.json`);
+
+  assertOverrideFlags(output, 'theme', true, OUTPUT_NAMES[name] ?? `${name}.tokens.json`);
+
+  writeFileSync(outPath, JSON.stringify(output, null, 2), 'utf8');
   const overrideCount = Object.keys(fmdsTheme).filter(k => k !== 'brand').length;
-  const totalCount = Object.keys(output.theme).length;
-  console.log(`${outPath.replace(ROOT + '/', '')}  [${modeName}]  brand:${brandCount}  overrides:${overrideCount}  total:${totalCount}`);
+  console.log(
+    `${outPath.replace(ROOT + '/', '')}  [theme/${modeName}]  overrides:${overrideCount}  ` +
+    `total:${Object.keys(output.theme).length}  (import SECOND — sets semantic aliases)`
+  );
 }

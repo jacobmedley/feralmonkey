@@ -107,7 +107,7 @@ function resolveReference(ref, stack = []) {
 }
 
 const themesDir = path.join(root, "tokens/themes");
-const themeFiles = fs.readdirSync(themesDir).filter((f) => f.endsWith(".json"));
+const themeFiles = fs.readdirSync(themesDir).filter((f) => f.endsWith(".json") && !f.startsWith("figma-"));
 
 const blocks = [];
 
